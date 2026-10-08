@@ -1,0 +1,137 @@
+﻿# Default: offline development. Paid services start only with --profile real.
+x-dev-env: &dev-env
+  ENV: development
+  ALLOWED_ORIGINS: http://localhost:8000,http://127.0.0.1:8000,http://api:8000,http://localhost:8001,http://127.0.0.1:8001,${ALLOWED_ORIGINS:-}
+  SITE_KEYS: pk_demo,${SITE_KEYS:-}
+  ADMIN_TOKEN: ${ADMIN_TOKEN:-dev-ingest-only}
+  RATE_LIMIT_PER_MIN: '100'
+  DAILY_LLM_CALL_CAP: ${DAILY_LLM_CALL_CAP:-5000}
+  EMBED_DIMENSIONS: ${EMBED_DIMENSIONS:-1024}
+  AUTO_INGEST: 'true'
+  CATALOGUE_ENABLED: 'false'
+  INCLUDE_UNREVIEWED: 'false'
+x-real-env: &real-env
+  <<: *dev-env
+  OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+  OPENAI_CHAT_MODEL: ${OPENAI_CHAT_MODEL:-gpt-4.1-mini}
+  OPENAI_EMBED_MODEL: ${OPENAI_EMBED_MODEL:-text-embedding-3-large}
+  OPENAI_TEMPERATURE: ${OPENAI_TEMPERATURE-0.2}
+  OPENAI_TIMEOUT: ${OPENAI_TIMEOUT:-25}
+  OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+  CHAT_API_KEY: ${CHAT_API_KEY:-}
+  CHAT_BASE_URL: ${CHAT_BASE_URL:-}
+  CHAT_JSON_MODE: ${CHAT_JSON_MODE:-true}
+  CHAT_FREE_ONLY: ${CHAT_FREE_ONLY:-false}
+  CHAT_FALLBACK_MODELS: ${CHAT_FALLBACK_MODELS:-}
+  CATALOGUE_ENABLED: ${CATALOGUE_ENABLED:-false}
+  CATALOGUE_BASE_URL: ${CATALOGUE_BASE_URL:-}
+  SOURCE_BASE_URL: ${SOURCE_BASE_URL:-}
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: rh
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rh}
+      POSTGRES_DB: rh
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U rh -d rh']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  api:
+    build: {context: ., target: service}
+    command: ['python', '-m', 'scripts.dev']
+    environment:
+      <<: *dev-env
+      DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db:5432/rh
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ['127.0.0.1:8000:8000']
+    restart: unless-stopped
+  pytest:
+    profiles: [test]
+    build: {context: ., target: tests}
+    environment:
+      TEST_DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db:5432/rh_test
+      RUN_REAL_WIDGET_SMOKE: '0'
+      RUN_REAL_QUALITY: '0'
+      RUN_REAL_JUDGE_CONTROLS: '0'
+    depends_on:
+      db: {condition: service_healthy}
+    volumes: [pytest-results:/results]
+    command: ['pytest']
+    healthcheck: {disable: true}
+  playwright:
+    profiles: [test]
+    build: {context: ., dockerfile: Dockerfile.playwright}
+    init: true
+    shm_size: 1gb
+    environment:
+      TEST_DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db:5432/rh_test
+      WIDGET_TEST_URL: http://api:8000
+      WIDGET_TEST_OUT: /results/widget-results.json
+      WIDGET_ADMIN_TOKEN: ${ADMIN_TOKEN:-dev-ingest-only}
+      WIDGET_RATE_LIMIT: '100'
+    depends_on:
+      api: {condition: service_healthy}
+    volumes: [browser-results:/results]
+    command: ['browser']
+  db-real:
+    profiles: [real]
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: rh
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rh}
+      POSTGRES_DB: rh_real
+    volumes: [real-pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U rh -d rh_real']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  api-real:
+    profiles: [real]
+    build: {context: ., target: service}
+    environment:
+      <<: *real-env
+      DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db-real:5432/rh_real
+    depends_on:
+      db-real: {condition: service_healthy}
+    ports: ['127.0.0.1:8001:8000']
+    restart: unless-stopped
+  real-smoke:
+    profiles: [real]
+    build: {context: ., dockerfile: Dockerfile.playwright}
+    init: true
+    shm_size: 1gb
+    environment:
+      <<: *real-env
+      TEST_DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db-real:5432/rh_smoke
+      RUN_REAL_WIDGET_SMOKE: '1'
+    depends_on:
+      db-real: {condition: service_healthy}
+    volumes: [smoke-results:/results]
+    command: ['smoke']
+  quality:
+    profiles: [real]
+    build: {context: ., target: tests}
+    environment:
+      <<: *real-env
+      TEST_DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:-rh}@db-real:5432/rh_quality
+      RUN_REAL_QUALITY: '1'
+    depends_on:
+      db-real: {condition: service_healthy}
+    volumes: [quality-results:/results]
+    command: ['quality']
+    healthcheck: {disable: true}
+volumes:
+  pgdata:
+  real-pgdata:
+  pytest-results:
+  browser-results:
+  smoke-results:
+  quality-results:
+

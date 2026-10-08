@@ -1,0 +1,75 @@
+{
+  "checks": 21,
+  "answers": [
+    {
+      "answer": "The contact email is info@rabbithole.ae.",
+      "sources": [
+        {
+          "title": "Public business contact",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "document_id": "contact-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "e1OaPgmQUPoK794sz2xeEw",
+      "language": "en"
+    },
+    {
+      "answer": "According to the refund policy, you should contact Rabbit Hole within 7 days of the delivery date to report a manufacturing defect. They will inspect the product and replace it if the defect is confirmed.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "u7WSFQJsWNegPM9sHV8_RA",
+      "language": "en"
+    },
+    {
+      "answer": "According to the refund policy, due to hygiene reasons, swimwear cannot be returned or exchanged if it has been opened or tried on, except in the case of a manufacturing defect.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "yaQKZKLfGk_BGA5Yx_t5HQ",
+      "language": "en"
+    },
+    {
+      "answer": "According to the refund policy, once a replacement request is approved, the replacement product will be shipped within 5-7 working days.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "7hU-q1Gf3voIi0Co4g1neA",
+      "language": "en"
+    },
+    {
+      "answer": "يجب الإبلاغ عن العيب المصنعي خلال 7 أيام من تاريخ الاستلام، وذلك لكي يتم فحص المنتج واستبداله في حال التأكد من وجود العيب.",
+      "sources": [
+        {
+          "title": "سياسة الاستحقاق",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-ar"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "tFNGDxdnL6_3hTqrE8Xxdg",
+      "language": "ar"
+    }
+  ]
+}

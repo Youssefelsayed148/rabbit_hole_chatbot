@@ -1,0 +1,37 @@
+﻿# Standalone production stack. Use --env-file .env.production; no dev fallbacks.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: rh
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      POSTGRES_DB: rh
+    volumes: [production-pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U rh -d rh']
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  api:
+    build: {context: ., target: service}
+    env_file: .env.production
+    environment:
+      ENV: production
+      DATABASE_URL: postgresql://rh:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@db:5432/rh
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?Set OPENAI_API_KEY}
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?Set ADMIN_TOKEN}
+      SITE_KEYS: ${SITE_KEYS:?Set SITE_KEYS}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:?Set ALLOWED_ORIGINS}
+      CATALOGUE_ENABLED: ${CATALOGUE_ENABLED:-false}
+      INCLUDE_UNREVIEWED: 'false'
+      AUTO_INGEST: 'true'
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ['127.0.0.1:8000:8000']
+    restart: unless-stopped
+    user: rag
+    init: true
+    security_opt: ['no-new-privileges:true']
+volumes:
+  production-pgdata:

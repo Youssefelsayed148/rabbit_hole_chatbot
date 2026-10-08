@@ -1,0 +1,2 @@
+{"event": "request", "call_id": "816967b16b3049dcba80a8da1e02663c", "endpoint": "/v1/embeddings", "model": "text-embedding-3-large", "time_utc": "2026-10-05T22:46:52.963089+00:00"}
+{"event": "response", "call_id": "816967b16b3049dcba80a8da1e02663c", "status": 200, "model": "text-embedding-3-large", "prompt_tokens": 3983, "completion_tokens": 0, "cached_tokens": 0, "total_tokens": 3983, "time_utc": "2026-10-05T22:46:56.495605+00:00"}

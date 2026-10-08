@@ -1,0 +1,21 @@
+{
+  "base_url": "https://darkturquoise-dunlin-447124.hostingersite.com",
+  "extracted_at": "2026-10-04T02:48:24.645324+00:00",
+  "documents": 20,
+  "chunks": 60,
+  "product_catalogue_status": "verified_public_api: 3 products, original EN/AR descriptions; prices and inventory fetched live",
+  "missing": [
+    "artwork content",
+    "size chart",
+    "shipping destinations/fees/delivery SLA",
+    "video/audio-only content",
+    "separate collection groupings"
+  ],
+  "original_pack": {
+    "extracted_at": "2026-10-04T02:48:24.645324+00:00",
+    "documents": 14,
+    "chunks": 42,
+    "build_sha256": "7599f828aade6fb47865c623dee44f691076edbe1093f8eacde618f4bbe99fb7"
+  },
+  "product_extracted_at": "2026-10-08T17:09:18.187668+00:00"
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "case-5",
+    "question": "How long does an approved replacement take to ship?",
+    "required_behavior": "5–7 working days; label as replacement dispatch, not normal delivery.",
+    "expected_document_ids": [
+      "refund-en"
+    ],
+    "answer": "According to the refund policy, if a replacement is approved, the replacement product will be shipped within 5-7 working days after the product is received and inspected.",
+    "language": "en",
+    "needs_human": false,
+    "sources": [
+      {
+        "title": "Refund Policy",
+        "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+        "document_id": "refund-en"
+      }
+    ],
+    "retrieved_chunks": [
+      {
+        "chunk_id": "refund-en-1",
+        "document_id": "refund-en",
+        "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+      },
+      {
+        "chunk_id": "refund-en-2",
+        "document_id": "refund-en",
+        "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+      },
+      {
+        "chunk_id": "refund-en-3",
+        "document_id": "refund-en",
+        "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+      },
+      {
+        "chunk_id": "refund-en-4",
+        "document_id": "refund-en",
+        "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+      },
+      {
+        "chunk_id": "refund-en-5",
+        "document_id": "refund-en",
+        "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+      },
+      {
+        "chunk_id": "contact-en-1",
+        "document_id": "contact-en",
+        "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+      }
+    ],
+    "cited_chunks": [
+      "refund-en-5"
+    ],
+    "verdict": {
+      "pass": false,
+      "reason": "The answer states the correct shipping time but does not label the shipment as a replacement dispatch as required."
+    },
+    "pass": false,
+    "cite_ok": true
+  }
+]

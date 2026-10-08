@@ -1,0 +1,19 @@
+﻿# Local verification only: use official OpenAI, no visitor traffic/history, log metadata.
+services:
+  api-real:
+    ports: !reset []
+    restart: 'no'
+    environment:
+      OPENAI_BASE_URL: https://api.openai.com/v1
+      OPENAI_USAGE_LOG: /tmp/rh-openai-usage.jsonl
+      STORE_MESSAGES: 'false'
+  real-smoke:
+    environment:
+      OPENAI_BASE_URL: https://api.openai.com/v1
+      OPENAI_USAGE_LOG: /results/openai-usage.jsonl
+      STORE_MESSAGES: 'false'
+  quality:
+    environment:
+      OPENAI_BASE_URL: https://api.openai.com/v1
+      OPENAI_USAGE_LOG: /results/openai-usage.jsonl
+      STORE_MESSAGES: 'false'

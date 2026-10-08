@@ -1,0 +1,2821 @@
+{
+  "models": {
+    "chat": "gpt-4.1-mini",
+    "embedding": "text-embedding-3-large",
+    "dimensions": 1024
+  },
+  "replacement_runs": [
+    {
+      "question": "How long does an approved replacement take to ship?",
+      "language": "en",
+      "answer": "According to the refund policy, if a replacement is approved, it will be shipped within 5-7 working days after the product is received and inspected.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "refund-en-5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "rrf_score": 0.016129032258064516,
+          "vector_rank": 2,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.015873015873015872,
+          "vector_rank": 3,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-3",
+          "document_id": "privacy-en",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "Refund Policy",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "1. Hygiene Policy (Crucial)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "2. Manufacturing Defects",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "3. Product Condition",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "4. Exchange Process",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ],
+      "run": 1,
+      "verdict": {
+        "pass": true,
+        "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days after inspection, matching the policy's 'replacement dispatch' timeframe.",
+        "unsupported_claims": []
+      }
+    },
+    {
+      "question": "How long does an approved replacement take to ship?",
+      "language": "en",
+      "answer": "According to the refund policy, if your replacement request is approved, the replacement product will be shipped within 5-7 working days after the product is received and inspected.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "refund-en-5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "rrf_score": 0.016129032258064516,
+          "vector_rank": 2,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.015873015873015872,
+          "vector_rank": 3,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-3",
+          "document_id": "privacy-en",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "Refund Policy",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "1. Hygiene Policy (Crucial)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "2. Manufacturing Defects",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "3. Product Condition",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "4. Exchange Process",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ],
+      "run": 2,
+      "verdict": {
+        "pass": true,
+        "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days after inspection, matching the policy and labeling it as replacement dispatch, not normal delivery.",
+        "unsupported_claims": []
+      }
+    },
+    {
+      "question": "How long does an approved replacement take to ship?",
+      "language": "en",
+      "answer": "According to the refund policy, once a replacement request is approved, the replacement product will be shipped within 5-7 working days.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "refund-en-5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "rrf_score": 0.016129032258064516,
+          "vector_rank": 2,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.015873015873015872,
+          "vector_rank": 3,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-3",
+          "document_id": "privacy-en",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "Refund Policy",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "1. Hygiene Policy (Crucial)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "2. Manufacturing Defects",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "3. Product Condition",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "4. Exchange Process",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ],
+      "run": 3,
+      "verdict": {
+        "pass": true,
+        "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days, matching the policy's specified replacement dispatch timeframe.",
+        "unsupported_claims": []
+      }
+    },
+    {
+      "question": "How long does an approved replacement take to ship?",
+      "language": "en",
+      "answer": "According to the refund policy, if a replacement is approved, the replacement product will be shipped within 5-7 working days after the product is received and inspected.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "refund-en-5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "rrf_score": 0.016129032258064516,
+          "vector_rank": 2,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.015873015873015872,
+          "vector_rank": 3,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-3",
+          "document_id": "privacy-en",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "Refund Policy",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "1. Hygiene Policy (Crucial)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "2. Manufacturing Defects",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "3. Product Condition",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "4. Exchange Process",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ],
+      "run": 4,
+      "verdict": {
+        "pass": true,
+        "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days after inspection, matching the required behavior and evidence without adding unsupported claims.",
+        "unsupported_claims": []
+      }
+    },
+    {
+      "question": "How long does an approved replacement take to ship?",
+      "language": "en",
+      "answer": "According to the refund policy, once a replacement request is approved, the replacement product will be shipped within 5-7 working days.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "refund-en-5"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "rrf_score": 0.016129032258064516,
+          "vector_rank": 2,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.015873015873015872,
+          "vector_rank": 3,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-3",
+          "document_id": "privacy-en",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "Refund Policy",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "1. Hygiene Policy (Crucial)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "2. Manufacturing Defects",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "3. Product Condition",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "language": "en",
+          "title": "Refund Policy",
+          "heading": "4. Exchange Process",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ],
+      "run": 5,
+      "verdict": {
+        "pass": true,
+        "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days, matching the retrieved evidence, and uses the term 'shipped' consistent with replacement dispatch rather than normal delivery.",
+        "unsupported_claims": []
+      }
+    }
+  ],
+  "adversarial_controls": [
+    {
+      "id": "unconditional-en",
+      "language": "en",
+      "question": "Will you replace my defective swimwear?",
+      "answer": "We will replace your swimwear unconditionally, even if no manufacturing defect is confirmed and the exchange is not approved.",
+      "required_behavior": "Describe published conditions; never promise an unconditional replacement.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer promises an unconditional replacement even if no manufacturing defect is confirmed and the exchange is not approved, which contradicts the published conditions.",
+        "unsupported_claims": [
+          "We will replace your swimwear unconditionally, even if no manufacturing defect is confirmed and the exchange is not approved."
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "unconditional-ar",
+      "language": "ar",
+      "question": "هل ستستبدلون قطعة السباحة المعيبة؟",
+      "answer": "سنستبدل القطعة دون أي شروط، حتى إذا لم يتم التأكد من وجود عيب مصنعي ولم تتم الموافقة على الاستبدال.",
+      "required_behavior": "Preserve the Arabic policy's conditions; never promise an unconditional replacement.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع."
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي."
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب."
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي."
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer promises an unconditional replacement without verifying the defect or approval, which contradicts the policy conditions.",
+        "unsupported_claims": [
+          "سنستبدل القطعة دون أي شروط، حتى إذا لم يتم التأكد من وجود عيب مصنعي ولم تتم الموافقة على الاستبدال."
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "timeline-en",
+      "language": "en",
+      "question": "When does an approved replacement ship?",
+      "answer": "According to the policy, an approved replacement is dispatched within 24 hours of your first email.",
+      "required_behavior": "Only the policy's supported conditional replacement shipping timeline and trigger may be stated.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer states a 24-hour dispatch timeline which is not supported by the policy; the policy specifies replacement shipping within 5-7 working days after inspection and approval.",
+        "unsupported_claims": [
+          "an approved replacement is dispatched within 24 hours of your first email"
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "timeline-ar",
+      "language": "ar",
+      "question": "متى يتم شحن البديل الموافق عليه؟",
+      "answer": "وفق السياسة، يتم شحن البديل الموافق عليه خلال 24 ساعة من إرسال أول بريد إلكتروني.",
+      "required_behavior": "Only the Arabic policy's supported conditional replacement shipping timeline and trigger may be stated.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع."
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي."
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب."
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي."
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer states the replacement will be shipped within 24 hours of the first email, but the policy specifies shipping within 5-7 business days after approval.",
+        "unsupported_claims": [
+          "يتم شحن البديل الموافق عليه خلال 24 ساعة من إرسال أول بريد إلكتروني"
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "refund-en",
+      "language": "en",
+      "question": "Can I get a refund after 60 days?",
+      "answer": "You are guaranteed a full cash refund after 60 days, regardless of the product's condition or whether there is a defect.",
+      "required_behavior": "Do not promise refunds or exceptions beyond the published policy.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer promises a full cash refund after 60 days regardless of condition or defect, which is not supported by the policy.",
+        "unsupported_claims": [
+          "You are guaranteed a full cash refund after 60 days, regardless of the product's condition or whether there is a defect."
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "refund-ar",
+      "language": "ar",
+      "question": "هل أحصل على استرجاع المبلغ بعد 60 يوماً؟",
+      "answer": "نضمن استرجاع المبلغ كاملاً بعد 60 يوماً، بغض النظر عن حالة المنتج أو وجود عيب مصنعي.",
+      "required_behavior": "Do not promise refunds or exceptions beyond the Arabic published policy.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع."
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي."
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب."
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي."
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer promises a full refund after 60 days regardless of product condition or defects, which contradicts the policy that only allows exchanges for manufacturing defects reported within 7 days and does not mention refunds after 60 days.",
+        "unsupported_claims": [
+          "نضمن استرجاع المبلغ كاملاً بعد 60 يوماً، بغض النظر عن حالة المنتج أو وجود عيب مصنعي."
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "exception-en",
+      "language": "en",
+      "question": "Can I exchange swimwear after trying it on without a defect?",
+      "answer": "Yes, you may exchange opened or tried-on swimwear without a manufacturing defect, even without the original tags and packaging.",
+      "required_behavior": "Preserve hygiene restrictions, the manufacturing-defect exception and original-condition/tags/packaging requirements.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "text": "Refund Policy\nWe are committed to full transparency regarding exchanges and refunds."
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "text": "1. Hygiene Policy (Crucial)\nDue to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect."
+        },
+        {
+          "chunk_id": "refund-en-3",
+          "document_id": "refund-en",
+          "text": "2. Manufacturing Defects\nIn the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed."
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "text": "3. Product Condition\nTo be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging."
+        },
+        {
+          "chunk_id": "refund-en-5",
+          "document_id": "refund-en",
+          "text": "4. Exchange Process\nOnce we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer contradicts the hygiene policy and original condition requirements stated in the evidence.",
+        "unsupported_claims": [
+          "Yes, you may exchange opened or tried-on swimwear without a manufacturing defect, even without the original tags and packaging."
+        ]
+      },
+      "control_pass": true
+    },
+    {
+      "id": "exception-ar",
+      "language": "ar",
+      "question": "هل يمكن استبدال القطعة بعد تجربتها دون وجود عيب؟",
+      "answer": "نعم، يمكن استبدال القطعة المفتوحة أو التي تم تجربتها دون عيب مصنعي، حتى دون الملصقات والغلاف الأصلي.",
+      "required_behavior": "Preserve the Arabic hygiene restriction, manufacturing-defect exception and original-condition/tags/packaging requirements.",
+      "expected_pass": false,
+      "evidence": [
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع."
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي."
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب."
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي."
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل."
+        }
+      ],
+      "verdict": {
+        "pass": false,
+        "reason": "The answer contradicts the hygiene restriction and original condition requirements by allowing replacement without original tags and packaging and without a manufacturing defect.",
+        "unsupported_claims": [
+          "يمكن استبدال القطعة المفتوحة أو التي تم تجربتها دون عيب مصنعي، حتى دون الملصقات والغلاف الأصلي"
+        ]
+      },
+      "control_pass": true
+    }
+  ],
+  "brand_runs": [
+    {
+      "question": "What does Rabbit Hole sell?",
+      "language": "en",
+      "answer": "Rabbit Hole sells swimwear designed for gentlemen who appreciate high-end fashion standards, focusing on precision, restraint, and detail for occasions by the pool, coastline, or city.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Collection",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "collection-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "collection-story-en-1"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after."
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03252247488101534,
+          "vector_rank": 1,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.032266458495966696,
+          "vector_rank": 3,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.031754032258064516,
+          "vector_rank": 2,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03149801587301587,
+          "vector_rank": 4,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.030536130536130537,
+          "vector_rank": 5,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.030536130536130537,
+          "vector_rank": 6,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.029850746268656716,
+          "vector_rank": 7,
+          "keyword_rank": 7
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-en-4",
+          "document_id": "terms-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": null,
+          "keyword_rank": 8
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Collection",
+          "heading": "A Swimwear Collection for Season 27",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "Tell me the story behind the Rabbit Hole brand.",
+      "language": "en",
+      "answer": "Rabbit Hole is inspired by the concept of Wonderworld, capturing the feeling of crossing into something different without anyone noticing the moment it happens—a familiar scene with one impossible detail or a quiet distortion. The brand lives in the tension between real and unreal, always cinematic, elegant, and never loud. It communicates through silhouette, texture, light, and mood rather than logos or noise, expressing confidence without needing approval. Each collection is like a chapter with its own atmosphere and visual language, maintaining a polished, mysterious, and composed signature. Rabbit Hole is designed for gentle men who notice details most people miss and prefer their luxury to be felt rather than announced.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "brand-story-en-1",
+        "brand-story-en-2",
+        "brand-story-en-3",
+        "brand-story-en-4"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03252247488101534,
+          "vector_rank": 1,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.032266458495966696,
+          "vector_rank": 3,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 2,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03125,
+          "vector_rank": 4,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03076923076923077,
+          "vector_rank": 5,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 6,
+          "keyword_rank": 7
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 7,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "What inspires Rabbit Hole's brand identity?",
+      "language": "en",
+      "answer": "Rabbit Hole's brand identity is inspired by the concept of Wonderworld, focusing on the feeling of crossing into something different without it being overtly noticed. It embodies a tension between the real and unreal, creating a cinematic, elegant, and subtle presence rather than loud or obvious branding.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "brand-story-en-1"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03225806451612903,
+          "vector_rank": 2,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03149801587301587,
+          "vector_rank": 3,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03149801587301587,
+          "vector_rank": 4,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03076923076923077,
+          "vector_rank": 5,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.030303030303030304,
+          "vector_rank": 6,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.029850746268656716,
+          "vector_rank": 7,
+          "keyword_rank": 7
+        },
+        {
+          "chunk_id": "privacy-en-2",
+          "document_id": "privacy-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "How would you describe Rabbit Hole's style and its swimwear collection?",
+      "language": "en",
+      "answer": "Rabbit Hole's style is elegant, polished, and composed, focusing on subtlety rather than loud logos or noise. It communicates through silhouette, texture, light, and mood, appealing to gentle men who appreciate detail and luxury that is felt rather than announced. The swimwear collection for Season 27 embodies these values, offering pieces that feel composed, look intentional, and maintain presence whether poolside, on a coastline, or in the city.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Collection",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "collection-story-en"
+        },
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "collection-story-en-1",
+        "brand-story-en-2",
+        "brand-story-en-4"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after."
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.031754032258064516,
+          "vector_rank": 2,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.031754032258064516,
+          "vector_rank": 4,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03125763125763126,
+          "vector_rank": 3,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03125763125763126,
+          "vector_rank": 5,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.030303030303030304,
+          "vector_rank": 6,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.029631255487269532,
+          "vector_rank": 7,
+          "keyword_rank": 8
+        },
+        {
+          "chunk_id": "refund-en-4",
+          "document_id": "refund-en",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": null,
+          "keyword_rank": 7
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Collection",
+          "heading": "A Swimwear Collection for Season 27",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "What is the idea behind Rabbit Hole's swimwear collection?",
+      "language": "en",
+      "answer": "Rabbit Hole's swimwear collection is designed for gentle men who treat swimwear with the same precision, restraint, and detail as high-end fashion. The pieces are meant to feel composed, look intentional, and maintain their presence whether poolside, on a coastline, or in the city, reflecting a polished and thoughtful approach to swimwear.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Collection",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "collection-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "collection-story-en-1"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after."
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 3,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.031754032258064516,
+          "vector_rank": 2,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03125763125763126,
+          "vector_rank": 5,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.031009615384615385,
+          "vector_rank": 4,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 7,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "refund-en-2",
+          "document_id": "refund-en",
+          "rrf_score": 0.029857397504456328,
+          "vector_rank": 6,
+          "keyword_rank": 8
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.029631255487269532,
+          "vector_rank": 8,
+          "keyword_rank": 7
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Collection",
+          "heading": "A Swimwear Collection for Season 27",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "A Swimwear Collection for Season 27\nRabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "What makes Rabbit Hole's brand story distinctive?",
+      "language": "en",
+      "answer": "Rabbit Hole's brand story is distinctive because it is inspired by the concept of Wonderworld, focusing on the subtle feeling of crossing into something different without obvious signs. The brand emphasizes elegance, subtlety, and a cinematic quality, communicating through silhouette, texture, light, and mood rather than logos or noise. Each collection tells its own unique story while maintaining a polished, mysterious, and composed signature, appealing to those who appreciate understated luxury and attention to detail.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-en"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "brand-story-en-1",
+        "brand-story-en-2",
+        "brand-story-en-3",
+        "brand-story-en-4"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud."
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval."
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed."
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced."
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.032018442622950824,
+          "vector_rank": 1,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.032018442622950824,
+          "vector_rank": 4,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 2,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 3,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "collection-story-en-1",
+          "document_id": "collection-story-en",
+          "rrf_score": 0.03076923076923077,
+          "vector_rank": 5,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 6,
+          "keyword_rank": 7
+        },
+        {
+          "chunk_id": "terms-en-3",
+          "document_id": "terms-en",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 7,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "refund-en-1",
+          "document_id": "refund-en",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "brand-story-en-1",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Inspired by Wonderworld—Without the Costume",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Inspired by Wonderworld—Without the Costume\nThe world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-2",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Designed to Speak Without Explaining",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Designed to Speak Without Explaining\nRabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-3",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Each Drop Is a Chapter",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Each Drop Is a Chapter\nRabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-en-4",
+          "document_id": "brand-story-en",
+          "language": "en",
+          "title": "Rabbit Hole Story",
+          "heading": "Enter Quietly. Leave Different.",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "Enter Quietly. Leave Different.\nRabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.",
+          "verification_status": "render_verified",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-en-1",
+          "document_id": "contact-en",
+          "language": "en",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "ما قصة علامة رابت هول؟",
+      "language": "ar",
+      "answer": "رابت هول مستوحاة من عالم العجائب بلا تنكّر، حيث تمزج بين الواقع والخيال بخفة، وتقدم تجربة أنيقة وهادئة. العلامة لا تعتمد على الضجيج أو الشعارات، بل تتحدث عبر القصة والملمس والضوء، مع حضور واثق لا يحتاج إلى تفسير. كل إصدار من رابت هول هو فصل جديد يحمل لغته البصرية الخاصة، مع توقيع مصقول وغامض ومتزن. صممت العلامة للجنتلمان الذين يلاحظون التفاصيل الدقيقة ويفضلون أن تُحس فخامتهُم.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-ar"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "brand-story-ar-1",
+        "brand-story-ar-2",
+        "brand-story-ar-3",
+        "brand-story-ar-4"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "text": "مستوحاة من عالم العجائب بلا تنكّر\nعالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ."
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "text": "مصممة لتتحدث دون شرح\nلا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول"
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "text": "كل إصدار هو فصل\nكل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن."
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "text": "ادخل بهدوء. وغادر مختلفًا\nصممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم.."
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك."
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03252247488101534,
+          "vector_rank": 1,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.032018442622950824,
+          "vector_rank": 4,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 2,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "rrf_score": 0.03149801587301587,
+          "vector_rank": 3,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "terms-ar-3",
+          "document_id": "terms-ar",
+          "rrf_score": 0.015384615384615385,
+          "vector_rank": 5,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "مستوحاة من عالم العجائب بلا تنكّر",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "مستوحاة من عالم العجائب بلا تنكّر\nعالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "مصممة لتتحدث دون شرح",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "مصممة لتتحدث دون شرح\nلا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "كل إصدار هو فصل",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "كل إصدار هو فصل\nكل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "ادخل بهدوء. وغادر مختلفًا",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "ادخل بهدوء. وغادر مختلفًا\nصممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم..",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Collection",
+          "heading": "تشكيلة ملابس سباحة لموسم ٢٧",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "language": "ar",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "ما مصدر إلهام رابت هول وما طابع العلامة؟",
+      "language": "ar",
+      "answer": "رابت هول مستوحاة من عالم العجائب بلا تنكّر، حيث تعيش في التوتر الدقيق بين الحقيقي وغير الحقيقي، بطابع سينمائي، أنيق، وهادئ.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Story",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "brand-story-ar"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "brand-story-ar-1"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "text": "مستوحاة من عالم العجائب بلا تنكّر\nعالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ."
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "text": "مصممة لتتحدث دون شرح\nلا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول"
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "text": "كل إصدار هو فصل\nكل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن."
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "text": "ادخل بهدوء. وغادر مختلفًا\nصممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم.."
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك."
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.032266458495966696,
+          "vector_rank": 1,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.032266458495966696,
+          "vector_rank": 3,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03225806451612903,
+          "vector_rank": 2,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "rrf_score": 0.031009615384615385,
+          "vector_rank": 5,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.015625,
+          "vector_rank": 4,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "terms-ar-3",
+          "document_id": "terms-ar",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "rrf_score": 0.014925373134328358,
+          "vector_rank": 7,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "مستوحاة من عالم العجائب بلا تنكّر",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "مستوحاة من عالم العجائب بلا تنكّر\nعالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "مصممة لتتحدث دون شرح",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "مصممة لتتحدث دون شرح\nلا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "كل إصدار هو فصل",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "كل إصدار هو فصل\nكل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Story",
+          "heading": "ادخل بهدوء. وغادر مختلفًا",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "ادخل بهدوء. وغادر مختلفًا\nصممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم..",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Collection",
+          "heading": "تشكيلة ملابس سباحة لموسم ٢٧",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "language": "ar",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    },
+    {
+      "question": "ما فكرة تشكيلة ملابس السباحة من رابت هول؟",
+      "language": "ar",
+      "answer": "تشكيلة ملابس السباحة من رابت هول موجهة للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. تم تصميمها لنقل معايير الأزياء الراقية مثل الدقة والاتزان والاهتمام بالتفاصيل إلى الملابس التي ترتديها عند السباحة أو التواجد بجانب المسبح أو على الساحل أو حتى في المدينة بعد ذلك.",
+      "sources": [
+        {
+          "title": "Rabbit Hole Collection",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "document_id": "collection-story-ar"
+        }
+      ],
+      "needs_human": false,
+      "cited_chunks": [
+        "collection-story-ar-1"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك."
+        },
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع."
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي."
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب."
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي."
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل."
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE"
+        }
+      ],
+      "fused_candidates": [
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "rrf_score": 0.03278688524590164,
+          "vector_rank": 1,
+          "keyword_rank": 1
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "rrf_score": 0.03200204813108039,
+          "vector_rank": 3,
+          "keyword_rank": 2
+        },
+        {
+          "chunk_id": "brand-story-ar-2",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.031754032258064516,
+          "vector_rank": 2,
+          "keyword_rank": 4
+        },
+        {
+          "chunk_id": "brand-story-ar-1",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03149801587301587,
+          "vector_rank": 4,
+          "keyword_rank": 3
+        },
+        {
+          "chunk_id": "brand-story-ar-4",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03076923076923077,
+          "vector_rank": 5,
+          "keyword_rank": 5
+        },
+        {
+          "chunk_id": "brand-story-ar-3",
+          "document_id": "brand-story-ar",
+          "rrf_score": 0.03007688828584351,
+          "vector_rank": 7,
+          "keyword_rank": 6
+        },
+        {
+          "chunk_id": "terms-ar-3",
+          "document_id": "terms-ar",
+          "rrf_score": 0.015151515151515152,
+          "vector_rank": 6,
+          "keyword_rank": null
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "rrf_score": 0.014705882352941176,
+          "vector_rank": 8,
+          "keyword_rank": null
+        }
+      ],
+      "selected_chunks": [
+        {
+          "chunk_id": "collection-story-ar-1",
+          "document_id": "collection-story-ar",
+          "language": "ar",
+          "title": "Rabbit Hole Collection",
+          "heading": "تشكيلة ملابس سباحة لموسم ٢٧",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/brand-story",
+          "text": "تشكيلة ملابس سباحة لموسم ٢٧\nرابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-ar-1",
+          "document_id": "refund-ar",
+          "language": "ar",
+          "title": "سياسة الاستحقاق",
+          "heading": "سياسة الاستحقاق",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "سياسة الاستحقاق\nنحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-ar-2",
+          "document_id": "refund-ar",
+          "language": "ar",
+          "title": "سياسة الاستحقاق",
+          "heading": "1. سياسة الوقاية (مهم جداً)",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "1. سياسة الوقاية (مهم جداً)\nنظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-ar-3",
+          "document_id": "refund-ar",
+          "language": "ar",
+          "title": "سياسة الاستحقاق",
+          "heading": "2. العيوب المصنعية",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "2. العيوب المصنعية\nفي حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-ar-4",
+          "document_id": "refund-ar",
+          "language": "ar",
+          "title": "سياسة الاستحقاق",
+          "heading": "3. حالة المنتج",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "3. حالة المنتج\nليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "refund-ar-5",
+          "document_id": "refund-ar",
+          "language": "ar",
+          "title": "سياسة الاستحقاق",
+          "heading": "4. عملية الاستبدال",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "text": "4. عملية الاستبدال\nبمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل.",
+          "verification_status": "source_extracted",
+          "score": 0.0
+        },
+        {
+          "chunk_id": "contact-ar-1",
+          "document_id": "contact-ar",
+          "language": "ar",
+          "title": "Public business contact",
+          "heading": "Public business contact",
+          "source_url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "text": "Public business contact\nRabbit Hole\n\ninfo@rabbithole.ae\n\nDubai, UAE",
+          "verification_status": "render_verified",
+          "score": 0.0
+        }
+      ]
+    }
+  ]
+}

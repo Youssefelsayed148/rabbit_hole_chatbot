@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rabbit Hole widget preview</title>
+<style>
+  /* Bright sea-and-sky backdrop: the worst case for text legibility, on purpose. */
+  html, body { margin: 0; height: 100%; }
+  body { background: linear-gradient(180deg, #5aa7f0 0%, #8fc7ff 42%, #f4f8fb 58%, #1d6fb8 59%, #0d4f8f 100%); font-family: system-ui, sans-serif; color: #fff; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; font-size: 22px; }
+  .toggles { display: flex; gap: 8px; font-size: 13px; }
+  .toggles button { border: 1px solid rgba(255,255,255,.7); background: rgba(0,0,0,.25); color: #fff; border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  main { padding: 8vh 28px; max-width: 640px; }
+  h1 { font-weight: 400; font-size: clamp(32px, 6vw, 56px); margin: 0 0 12px; text-shadow: 0 2px 20px rgba(0,0,0,.25); }
+  p { max-width: 46ch; line-height: 1.5; text-shadow: 0 1px 12px rgba(0,0,0,.25); }
+  small { position: fixed; inset-block-end: 8px; inset-inline-start: 12px; opacity: .8; }
+</style>
+<script>
+  // Mock of POST /chat so the widget can be previewed without the service running.
+  // Try: "defect", "where is my order" (needs_human), "429", "error", "offline", or Arabic text.
+  const params = new URLSearchParams(location.search);
+  const live = params.get("mode") === "live";
+  const realFetch = window.fetch.bind(window);
+  window.fetch = async (url, opts = {}) => {
+    if (live || !String(url).endsWith('/chat')) return realFetch(url, opts);
+    const body = JSON.parse(opts.body || '{}'); const m = (body.message || '').toLowerCase();
+    await new Promise((r) => setTimeout(r, 900));
+    if (m.includes('offline')) throw new TypeError('Failed to fetch');
+    if (m.includes('429')) return new Response('{}', { status: 429 });
+    if (m.includes('error')) return new Response('{}', { status: 500 });
+    const ar = body.language === 'ar';
+    const reply = (answer, extra = {}) => new Response(JSON.stringify({ answer, sources: [], products: [], needs_human: false, conversation_id: 'demo-conversation', language: ar ? 'ar' : 'en', ...extra }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    if (m.includes('order') || m.includes('طلبي')) return reply(ar ? 'لا أستطيع الاطلاع على الطلبات. راسل info@rabbithole.ae مع تفاصيل طلبك.' : 'I cannot see orders. Email info@rabbithole.ae with your order details and the team will help.', { needs_human: true });
+    if (ar) return reply('وفق سياسة الاستحقاق، يجب التواصل معنا خلال 7 أيام من تاريخ الاستلام عند وجود عيب مصنعي، وسنفحص المنتج قبل الاستبدال.', { sources: [{ title: 'سياسة الاستحقاق', url: 'https://example.com/refund', document_id: 'refund-ar' }] });
+    return reply('According to the refund policy, report a manufacturing defect within 7 days of delivery. The item is inspected before an exchange is approved, and it must be unworn, with tags and original packaging.\n\nQuestions: info@rabbithole.ae', { sources: [{ title: 'Refund Policy', url: 'https://example.com/refund', document_id: 'refund-en' }] });
+  };
+</script>
+</head>
+<body>
+  <nav>
+    <span>Rabbit Hole</span>
+    <span class="toggles">
+      <button type="button" onclick="document.documentElement.lang='en';document.documentElement.dir='ltr'">EN</button>
+      <button type="button" onclick="document.documentElement.lang='ar';document.documentElement.dir='rtl'">AR</button>
+    </span>
+  </nav>
+  <main><h1>Enter quietly.</h1><p>Widget preview on a bright photographic-style background. The EN/AR buttons change &lt;html lang&gt; the way the real site's toggle would.</p></main>
+  <small id="mode"></small>
+  <script>
+    document.getElementById('mode').textContent = live
+      ? 'Live /chat | checking backend provider…'
+      : 'Offline mock | try: defect | where is my order | 429 | error | offline';
+    if (live) {
+      realFetch('/health').then(r => {
+        if (!r.ok) throw new Error('Health check failed');
+        return r.json();
+      }).then(health => {
+        const providers = health.providers;
+        document.getElementById('mode').textContent = providers?.chat === 'FakeChat'
+          ? 'Offline test backend — placeholder answers. Real model demo: http://localhost:8001/demo.html?mode=live'
+          : providers?.model
+            ? 'Live /chat | model: ' + providers.model
+            : 'Live /chat | backend provider not reported';
+      }).catch(() => {
+        document.getElementById('mode').textContent = 'Live /chat | backend health check unavailable';
+      });
+    }
+    const widget = document.createElement('script');
+    widget.src = './widget.js';
+    widget.dataset.api = live ? location.origin : 'https://mock.local';
+    widget.dataset.siteKey = live ? (params.get('site_key') || 'pk_demo') : 'pk_demo';
+    document.body.append(widget);
+  </script>
+</body>
+</html>

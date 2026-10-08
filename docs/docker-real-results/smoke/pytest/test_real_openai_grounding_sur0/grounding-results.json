@@ -1,0 +1,147 @@
+[
+  {
+    "case": {
+      "id": "case-2",
+      "question": "What is the contact email?",
+      "required_behavior": "info@rabbithole.ae.",
+      "expected_document_ids": [
+        "contact-en"
+      ]
+    },
+    "response": {
+      "answer": "The contact email is info@rabbithole.ae.",
+      "sources": [
+        {
+          "title": "Public business contact",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/",
+          "document_id": "contact-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "e1OaPgmQUPoK794sz2xeEw",
+      "language": "en"
+    },
+    "verdict": {
+      "pass": true,
+      "reason": "The answer correctly provides the contact email as info@rabbithole.ae, which matches the retrieved evidence.",
+      "unsupported_claims": []
+    }
+  },
+  {
+    "case": {
+      "id": "case-3",
+      "question": "I found a manufacturing defect. When should I report it?",
+      "required_behavior": "Within 7 days of delivery; inspection/confirmation required.",
+      "expected_document_ids": [
+        "refund-en"
+      ]
+    },
+    "response": {
+      "answer": "According to the refund policy, you should contact Rabbit Hole within 7 days of the delivery date to report a manufacturing defect. They will inspect the product and replace it if the defect is confirmed.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "u7WSFQJsWNegPM9sHV8_RA",
+      "language": "en"
+    },
+    "verdict": {
+      "pass": true,
+      "reason": "The answer correctly states the 7-day reporting window and the inspection requirement for manufacturing defects as per the refund policy.",
+      "unsupported_claims": []
+    }
+  },
+  {
+    "case": {
+      "id": "case-4",
+      "question": "Can I return swimwear after trying it on?",
+      "required_behavior": "Policy disallows opened/tried-on returns/exchanges except manufacturing defects; preserve exception.",
+      "expected_document_ids": [
+        "refund-en"
+      ]
+    },
+    "response": {
+      "answer": "According to the refund policy, due to hygiene reasons, swimwear cannot be returned or exchanged if it has been opened or tried on, except in the case of a manufacturing defect.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "yaQKZKLfGk_BGA5Yx_t5HQ",
+      "language": "en"
+    },
+    "verdict": {
+      "pass": true,
+      "reason": "The answer correctly states the policy that swimwear cannot be returned or exchanged if opened or tried on except for manufacturing defects, matching the retrieved evidence.",
+      "unsupported_claims": []
+    }
+  },
+  {
+    "case": {
+      "id": "case-5",
+      "question": "How long does an approved replacement take to ship?",
+      "required_behavior": "5–7 working days; label as replacement dispatch, not normal delivery.",
+      "expected_document_ids": [
+        "refund-en"
+      ]
+    },
+    "response": {
+      "answer": "According to the refund policy, once a replacement request is approved, the replacement product will be shipped within 5-7 working days.",
+      "sources": [
+        {
+          "title": "Refund Policy",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-en"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "7hU-q1Gf3voIi0Co4g1neA",
+      "language": "en"
+    },
+    "verdict": {
+      "pass": true,
+      "reason": "The answer correctly states that an approved replacement will be shipped within 5-7 working days, matching the evidence, and uses the term 'shipped' consistent with replacement dispatch rather than normal delivery.",
+      "unsupported_claims": []
+    }
+  },
+  {
+    "case": {
+      "id": "widget-ar",
+      "question": "ما هي مهلة الإبلاغ عن عيب تصنيع؟",
+      "expected_document_ids": [
+        "refund-ar"
+      ],
+      "required_behavior": "Answer in Arabic from the Arabic refund policy: report within 7 days of delivery, inspection/confirmation required; invent no facts."
+    },
+    "response": {
+      "answer": "يجب الإبلاغ عن العيب المصنعي خلال 7 أيام من تاريخ الاستلام، وذلك لكي يتم فحص المنتج واستبداله في حال التأكد من وجود العيب.",
+      "sources": [
+        {
+          "title": "سياسة الاستحقاق",
+          "url": "https://darkturquoise-dunlin-447124.hostingersite.com/refund",
+          "document_id": "refund-ar"
+        }
+      ],
+      "products": [],
+      "needs_human": false,
+      "conversation_id": "tFNGDxdnL6_3hTqrE8Xxdg",
+      "language": "ar"
+    },
+    "verdict": {
+      "pass": true,
+      "reason": "The answer correctly states the 7-day reporting period and the requirement for inspection before replacement, matching the policy without adding invented facts.",
+      "unsupported_claims": []
+    }
+  }
+]

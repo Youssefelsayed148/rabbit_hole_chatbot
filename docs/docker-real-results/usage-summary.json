@@ -1,0 +1,73 @@
+{
+  "prices_verified_on": "2026-10-06",
+  "currency": "USD",
+  "rates_per_million_tokens": {
+    "gpt-4.1-mini": {
+      "input": 0.4,
+      "cached_input": 0.1,
+      "output": 1.6
+    },
+    "text-embedding-3-large": {
+      "input": 0.13
+    }
+  },
+  "pricing_sources": {
+    "gpt-4.1-mini": "https://developers.openai.com/api/docs/models/gpt-4.1-mini",
+    "text-embedding-3-large": "https://developers.openai.com/api/docs/models/text-embedding-3-large"
+  },
+  "phases": {
+    "api-real startup": {
+      "requests": 1,
+      "successful_responses": 1,
+      "unsuccessful_or_unanswered_attempts": 0,
+      "embedding_requests": 1,
+      "chat_requests": 0,
+      "tokens": {
+        "embedding_input": 3983
+      },
+      "estimated_usd": 0.00051779
+    },
+    "real-smoke": {
+      "requests": 18,
+      "successful_responses": 18,
+      "unsuccessful_or_unanswered_attempts": 0,
+      "embedding_requests": 6,
+      "chat_requests": 12,
+      "tokens": {
+        "embedding_input": 4047,
+        "chat_input": 10095,
+        "chat_cached_input": 0,
+        "chat_output": 575
+      },
+      "estimated_usd": 0.00548411
+    },
+    "quality": {
+      "requests": 37,
+      "successful_responses": 37,
+      "unsuccessful_or_unanswered_attempts": 0,
+      "embedding_requests": 12,
+      "chat_requests": 25,
+      "tokens": {
+        "embedding_input": 4116,
+        "chat_input": 20216,
+        "chat_cached_input": 0,
+        "chat_output": 1282
+      },
+      "estimated_usd": 0.01067268
+    }
+  },
+  "total": {
+    "requests": 56,
+    "successful_responses": 56,
+    "unsuccessful_or_unanswered_attempts": 0,
+    "embedding_requests": 19,
+    "chat_requests": 37,
+    "estimated_usd": 0.01667458,
+    "tokens": {
+      "embedding_input": 12146,
+      "chat_input": 30311,
+      "chat_cached_input": 0,
+      "chat_output": 1857
+    }
+  }
+}

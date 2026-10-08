@@ -1,0 +1,19 @@
+﻿# Keep the Node package and browser image versions identical.
+# https://playwright.dev/docs/docker
+FROM mcr.microsoft.com/playwright:v1.63.0-noble
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends python3-venv && rm -rf /var/lib/apt/lists/*
+WORKDIR /srv
+ENV PATH="/opt/venv/bin:${PATH}" PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 PLAYWRIGHT_MODULE=/srv/node_modules/playwright-core
+RUN python3 -m venv /opt/venv
+COPY requirements.txt requirements-dev.txt ./
+RUN pip install -r requirements-dev.txt && npm install --no-save --package-lock=false playwright-core@1.63.0
+COPY app ./app
+COPY scripts ./scripts
+COPY tests ./tests
+COPY data ./data
+COPY widget.js demo.html pytest.ini ./
+RUN mkdir -p /results && chown -R pwuser /srv /results
+USER pwuser
+ENTRYPOINT ["python", "-m", "scripts.container_tests"]
+

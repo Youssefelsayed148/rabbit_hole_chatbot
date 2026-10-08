@@ -1,0 +1,355 @@
+﻿kind,source_reference,source_string_or_English_reference,Arabic_text,corrections,review_status,source_url
+widget,widget.js T.ar.sub,Ask about Rabbit Hole,اسأل عن رابت هول,,UNREVIEWED,
+widget,widget.js T.ar.welcome,"Welcome to Rabbit Hole. I can help with the brand, the collection, exchanges and refunds, or how to reach us.",أهلاً بك في رابت هول. يسعدني مساعدتك في التعريف بالعلامة والتشكيلة، وسياسة الاستبدال والاسترجاع، وطريقة التواصل معنا.,,UNREVIEWED,
+widget,widget.js T.ar.placeholder,Type your message...,اكتب رسالتك ...,,UNREVIEWED,
+widget,widget.js T.ar.send,Send,إرسال,,UNREVIEWED,
+widget,widget.js T.ar.close,Close chat,إغلاق المحادثة,,UNREVIEWED,
+widget,widget.js T.ar.open,Open chat,فتح المحادثة,,UNREVIEWED,
+widget,widget.js T.ar.fresh,New chat,محادثة جديدة,,UNREVIEWED,
+widget,widget.js T.ar.typing,is typing,يكتب الآن,,UNREVIEWED,
+widget,widget.js T.ar.sources,Sources,المصادر,,UNREVIEWED,
+widget,widget.js T.ar.email,Email support,راسل الدعم,,UNREVIEWED,
+widget,widget.js T.ar.retry,Retry,إعادة المحاولة,,UNREVIEWED,
+widget,widget.js T.ar.msgLabel,Your message,رسالتك,,UNREVIEWED,
+widget,widget.js T.ar.errNet,"No connection to the assistant. Check your network, then retry.",تعذّر الاتصال بالمساعد. تحقق من الشبكة ثم أعد المحاولة.,,UNREVIEWED,
+widget,widget.js T.ar.errRate,"Too many messages in a short time. Wait a moment, then retry.",عدد الرسائل كبير في وقت قصير. انتظر قليلاً ثم أعد المحاولة.,,UNREVIEWED,
+widget,widget.js T.ar.errBad,That message could not be sent. Shorten it and try again.,تعذّر إرسال هذه الرسالة. اختصرها وحاول مرة أخرى.,,UNREVIEWED,
+widget,widget.js T.ar.errGen,"The assistant is unavailable right now. Try again, or email us.",المساعد غير متاح الآن. حاول مرة أخرى أو راسلنا بالبريد.,,UNREVIEWED,
+widget,widget.js T.ar.chips[0].label,Exchange and refund policy,سياسة الاستبدال والاسترجاع,,UNREVIEWED,
+widget,widget.js T.ar.chips[0].question,What is your exchange and refund policy?,ما هي سياسة الاستبدال والاسترجاع؟,,UNREVIEWED,
+widget,widget.js T.ar.chips[1].label,Report a defect,الإبلاغ عن عيب,,UNREVIEWED,
+widget,widget.js T.ar.chips[1].question,I received a manufacturing defect. What should I do?,استلمت قطعة بها عيب مصنعي. ماذا أفعل؟,,UNREVIEWED,
+widget,widget.js T.ar.chips[2].label,About the brand,عن العلامة,,UNREVIEWED,
+widget,widget.js T.ar.chips[2].question,Tell me about Rabbit Hole.,حدثني عن رابت هول.,,UNREVIEWED,
+widget,widget.js T.ar.chips[3].label,Contact us,تواصل معنا,,UNREVIEWED,
+widget,widget.js T.ar.chips[3].question,How can I contact you?,كيف يمكنني التواصل معكم؟,,UNREVIEWED,
+backend interface,FALLBACK_TEXT,I can't answer that right now. Please contact our team{email} and they will help you.,لا أستطيع الإجابة الآن. يرجى التواصل مع فريقنا{email} وسيساعدونك.,,UNREVIEWED,
+backend interface,CATALOGUE_UNCONFIRMED,"I can't confirm product prices, stock, sizes or availability here. Please check the website or contact our team{email}.",لا أستطيع تأكيد أسعار المنتجات أو المخزون أو المقاسات أو التوفر هنا. يرجى مراجعة الموقع أو التواصل مع فريقنا{email}.,,UNREVIEWED,
+backend interface,SMALLTALK_REPLY,"Welcome to Rabbit Hole. Ask me about the brand, our collection story, exchanges and refunds, or how to reach us.",أهلاً بك في رابت هول. اسألني عن العلامة، قصة التشكيلة، سياسة الاستبدال والاسترجاع، أو طريقة التواصل معنا.,,UNREVIEWED,
+backend interface,ChatService._email_suffix, at {email}, عبر {email},,UNREVIEWED,
+content chunk,terms-ar-1.title,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-1.heading,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-1.text,"Terms & Conditions
+Please read these terms carefully before using our services.","الشروط والأحكام
+يرجى قراءة هذه الشروط بعناية قبل استخدام خدماتنا.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-2.title,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-2.heading,1. Acceptance of Terms,1. قبول الشروط,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-2.text,"1. Acceptance of Terms
+By accessing and using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, please do not use our website.","1. قبول الشروط
+بدخولك واستخدامك لهذا الموقع، فإنك تقر بأنك قد قرأت وفهمت ووافقت على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، فيرجى عدم استخدام موقعنا.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-3.title,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-3.heading,2. Intellectual Property,2. الملكية الفكرية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-3.text,"2. Intellectual Property
+All content on this website, including text, graphics, logos, images, and software, is the property of Rabbit Hole and is protected by international intellectual property laws.","2. الملكية الفكرية
+جميع المحتويات الموجودة على هذا الموقع، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لـ Rabbit Hole ومحمية بموجب قوانين الملكية الفكرية الدولية.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-4.title,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-4.heading,3. Use of Website,3. استخدام الموقع,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-4.text,"3. Use of Website
+You are permitted to use the website for personal, non-commercial purposes only. You may not copy, modify, distribute, or sell any part of the website content without our prior written permission.","3. استخدام الموقع
+يُسمح لك باستخدام الموقع لأغراض شخصية وغير تجارية فقط. لا يجوز لك نسخ أو تعديل أو توزيع أو بيع أي جزء من محتوى الموقع دون إذن كتابي مسبق منا.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-5.title,Terms & Conditions,الشروط والأحكام,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-5.heading,4. Products & Pricing,4. المنتجات والأسعار,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,terms-ar-5.text,"4. Products & Pricing
+We strive to ensure the accuracy of product information and pricing. However, errors may occur. We reserve the right to correct any errors and change prices at any time without prior notice.","4. المنتجات والأسعار
+نحن نسعى جاهدين لضمان دقة معلومات المنتجات والأسعار. ومع ذلك، قد تحدث أخطاء. نحتفظ بالحق في تصحيح أي أخطاء وتغيير الأسعار في أي وقت دون إشعار مسبق.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+content chunk,refund-ar-1.title,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-1.heading,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-1.text,"Refund Policy
+We are committed to full transparency regarding exchanges and refunds.","سياسة الاستحقاق
+نحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-2.title,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-2.heading,1. Hygiene Policy (Crucial),1. سياسة الوقاية (مهم جداً),,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-2.text,"1. Hygiene Policy (Crucial)
+Due to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.","1. سياسة الوقاية (مهم جداً)
+نظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-3.title,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-3.heading,2. Manufacturing Defects,2. العيوب المصنعية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-3.text,"2. Manufacturing Defects
+In the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.","2. العيوب المصنعية
+في حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-4.title,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-4.heading,3. Product Condition,3. حالة المنتج,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-4.text,"3. Product Condition
+To be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.","3. حالة المنتج
+ليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-5.title,Refund Policy,سياسة الاستحقاق,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-5.heading,4. Exchange Process,4. عملية الاستبدال,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,refund-ar-5.text,"4. Exchange Process
+Once we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.","4. عملية الاستبدال
+بمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+content chunk,privacy-ar-1.title,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-1.heading,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-1.text,"Privacy Policy
+We respect your privacy and are committed to protecting your personal data.","سياسة الخصوصية
+نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-2.title,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-2.heading,1. Information We Collect,1. المعلومات التي نجمعها,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-2.text,"1. Information We Collect
+We collect information that you provide directly to us when you create an account, make a purchase, or communicate with us. This information may include your name, email address, shipping address, and payment details.","1. المعلومات التي نجمعها
+نحن نجمع المعلومات التي تقدمها لنا مباشرة عند إنشاء حساب، أو إجراء عملية شراء، أو التواصل معنا. قد تشمل هذه المعلومات اسمك، وعنوان بريدك الإلكتروني، وعنوان الشحن، وتفاصيل الدفع.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-3.title,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-3.heading,2. How We Use Your Information,2. كيف نستخدم معلوماتك,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-3.text,"2. How We Use Your Information
+We use your information to process your orders, improve your shopping experience, and communicate with you about updates. We do not sell or share your personal information with third parties for marketing purposes.","2. كيف نستخدم معلوماتك
+نستخدم معلوماتك لمعالجة طلباتك، وتحسين تجربة التسوق الخاصة بك، والتواصل معك بشأن التحديثات. نحن لا نبيع أو نشارك معلوماتك الشخصية مع أطراف ثالثة لأغراض تسويقية.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-4.title,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-4.heading,3. Data Security,3. أمن البيانات,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-4.text,"3. Data Security
+We use advanced encryption technologies and strict security protocols to protect your data from unauthorized access or disclosure.","3. أمن البيانات
+نحن نستخدم تقنيات تشفير متقدمة وبروتوكولات أمان صارمة لحماية بياناتك من الوصول غير المصرح به أو الكشف عنها.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-5.title,Privacy Policy,سياسة الخصوصية,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-5.heading,4. Your Rights,4. حقوقك,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,privacy-ar-5.text,"4. Your Rights
+You have the right to access, correct, or request the deletion of your personal information. You can do this through your account settings or by contacting our support team.","4. حقوقك
+لديك الحق في الوصول إلى معلوماتك الشخصية وتصحيحها أو طلب حذفها. يمكنك القيام بذلك عبر إعدادات حسابك أو بالتواصل مع فريق الدعم لدينا.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+content chunk,brand-story-ar-1.title,Rabbit Hole Story,Rabbit Hole Story,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-1.heading,Inspired by Wonderworld—Without the Costume,مستوحاة من عالم العجائب بلا تنكّر,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-1.text,"Inspired by Wonderworld—Without the Costume
+The world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.","مستوحاة من عالم العجائب بلا تنكّر
+عالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-2.title,Rabbit Hole Story,Rabbit Hole Story,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-2.heading,Designed to Speak Without Explaining,مصممة لتتحدث دون شرح,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-2.text,"Designed to Speak Without Explaining
+Rabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.","مصممة لتتحدث دون شرح
+لا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-3.title,Rabbit Hole Story,Rabbit Hole Story,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-3.heading,Each Drop Is a Chapter,كل إصدار هو فصل,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-3.text,"Each Drop Is a Chapter
+Rabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.","كل إصدار هو فصل
+كل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-4.title,Rabbit Hole Story,Rabbit Hole Story,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-4.heading,Enter Quietly. Leave Different.,ادخل بهدوء. وغادر مختلفًا,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,brand-story-ar-4.text,"Enter Quietly. Leave Different.
+Rabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.","ادخل بهدوء. وغادر مختلفًا
+صممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم..",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,collection-story-ar-1.title,Rabbit Hole Collection,Rabbit Hole Collection,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,collection-story-ar-1.heading,A Swimwear Collection for Season 27,تشكيلة ملابس سباحة لموسم ٢٧,,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,collection-story-ar-1.text,"A Swimwear Collection for Season 27
+Rabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after.","تشكيلة ملابس سباحة لموسم ٢٧
+رابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+content chunk,contact-ar-1.title,Public business contact,Public business contact,,UNREVIEWED ARABIC; source status=render_verified,https://darkturquoise-dunlin-447124.hostingersite.com/
+content chunk,contact-ar-1.heading,Public business contact,Public business contact,,UNREVIEWED ARABIC; source status=render_verified,https://darkturquoise-dunlin-447124.hostingersite.com/
+content chunk,contact-ar-1.text,"Public business contact
+Rabbit Hole
+
+info@rabbithole.ae
+
+Dubai, UAE","Public business contact
+Rabbit Hole
+
+info@rabbithole.ae
+
+Dubai, UAE",,UNREVIEWED ARABIC; source status=render_verified,https://darkturquoise-dunlin-447124.hostingersite.com/
+full source document,terms-ar,"Terms & Conditions
+
+Please read these terms carefully before using our services.
+
+1. Acceptance of Terms
+
+By accessing and using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms & Conditions. If you do not agree with any part of these terms, please do not use our website.
+
+2. Intellectual Property
+
+All content on this website, including text, graphics, logos, images, and software, is the property of Rabbit Hole and is protected by international intellectual property laws.
+
+3. Use of Website
+
+You are permitted to use the website for personal, non-commercial purposes only. You may not copy, modify, distribute, or sell any part of the website content without our prior written permission.
+
+4. Products & Pricing
+
+We strive to ensure the accuracy of product information and pricing. However, errors may occur. We reserve the right to correct any errors and change prices at any time without prior notice.
+
+Last Updated: April 26, 2026","الشروط والأحكام
+
+يرجى قراءة هذه الشروط بعناية قبل استخدام خدماتنا.
+
+1. قبول الشروط
+
+بدخولك واستخدامك لهذا الموقع، فإنك تقر بأنك قد قرأت وفهمت ووافقت على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، فيرجى عدم استخدام موقعنا.
+
+2. الملكية الفكرية
+
+جميع المحتويات الموجودة على هذا الموقع، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لـ Rabbit Hole ومحمية بموجب قوانين الملكية الفكرية الدولية.
+
+3. استخدام الموقع
+
+يُسمح لك باستخدام الموقع لأغراض شخصية وغير تجارية فقط. لا يجوز لك نسخ أو تعديل أو توزيع أو بيع أي جزء من محتوى الموقع دون إذن كتابي مسبق منا.
+
+4. المنتجات والأسعار
+
+نحن نسعى جاهدين لضمان دقة معلومات المنتجات والأسعار. ومع ذلك، قد تحدث أخطاء. نحتفظ بالحق في تصحيح أي أخطاء وتغيير الأسعار في أي وقت دون إشعار مسبق.
+
+آخر تحديث: 26 أبريل 2026",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/terms
+full source document,refund-ar,"Refund Policy
+
+We are committed to full transparency regarding exchanges and refunds.
+
+1. Hygiene Policy (Crucial)
+
+Due to the nature of our products (swimwear), and for reasons of public health and hygiene, we do not accept returns or exchanges for any item that has been opened or tried on, except in the case of a manufacturing defect.
+
+2. Manufacturing Defects
+
+In the event of receiving a product with a manufacturing defect, please contact us within 7 days of the delivery date. We will inspect the product and replace it with a new item if the defect is confirmed.
+
+3. Product Condition
+
+To be eligible for an exchange, the product must be in its original condition, unworn, with all original tags attached and in its original packaging.
+
+4. Exchange Process
+
+Once we receive and inspect the product, we will send you an email to notify you of the status of your request. If approved, the replacement product will be shipped within 5-7 working days.
+
+Last Updated: April 26, 2026","سياسة الاستحقاق
+
+نحن نلتزم بالشفافية الكاملة فيما يخص عمليات الاستبدال والاسترجاع.
+
+1. سياسة الوقاية (مهم جداً)
+
+نظراً لطبيعة منتجاتنا (ملابس السباحة)، ولأسباب تتعلق بالصحة العامة والوقاية، فإننا لا نقبل استرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي.
+
+2. العيوب المصنعية
+
+في حالة استلام منتج به عيب مصنعي، يرجى التواصل معنا خلال 7 أيام من تاريخ الاستلام. سنقوم بفحص المنتج واستبداله بقطعة جديدة في حالة التأكد من وجود العيب.
+
+3. حالة المنتج
+
+ليتم النظر في طلب الاستبدال، يجب أن يكون المنتج في حالته الأصلية، غير مستخدم، مع جميع الملصقات الأصلية وفي غلافه الأصلي.
+
+4. عملية الاستبدال
+
+بمجرد استلامنا للمنتج وفحصه، سنرسل لك بريداً إلكترونياً لإخطارك بحالة الطلب. في حالة الموافقة، سيتم شحن المنتج البديل خلال 5-7 أيام عمل.
+
+آخر تحديث: 26 أبريل 2026",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/refund
+full source document,privacy-ar,"Privacy Policy
+
+We respect your privacy and are committed to protecting your personal data.
+
+1. Information We Collect
+
+We collect information that you provide directly to us when you create an account, make a purchase, or communicate with us. This information may include your name, email address, shipping address, and payment details.
+
+2. How We Use Your Information
+
+We use your information to process your orders, improve your shopping experience, and communicate with you about updates. We do not sell or share your personal information with third parties for marketing purposes.
+
+3. Data Security
+
+We use advanced encryption technologies and strict security protocols to protect your data from unauthorized access or disclosure.
+
+4. Your Rights
+
+You have the right to access, correct, or request the deletion of your personal information. You can do this through your account settings or by contacting our support team.
+
+Last Updated: April 26, 2026","سياسة الخصوصية
+
+نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.
+
+1. المعلومات التي نجمعها
+
+نحن نجمع المعلومات التي تقدمها لنا مباشرة عند إنشاء حساب، أو إجراء عملية شراء، أو التواصل معنا. قد تشمل هذه المعلومات اسمك، وعنوان بريدك الإلكتروني، وعنوان الشحن، وتفاصيل الدفع.
+
+2. كيف نستخدم معلوماتك
+
+نستخدم معلوماتك لمعالجة طلباتك، وتحسين تجربة التسوق الخاصة بك، والتواصل معك بشأن التحديثات. نحن لا نبيع أو نشارك معلوماتك الشخصية مع أطراف ثالثة لأغراض تسويقية.
+
+3. أمن البيانات
+
+نحن نستخدم تقنيات تشفير متقدمة وبروتوكولات أمان صارمة لحماية بياناتك من الوصول غير المصرح به أو الكشف عنها.
+
+4. حقوقك
+
+لديك الحق في الوصول إلى معلوماتك الشخصية وتصحيحها أو طلب حذفها. يمكنك القيام بذلك عبر إعدادات حسابك أو بالتواصل مع فريق الدعم لدينا.
+
+آخر تحديث: 26 أبريل 2026",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/privacy
+full source document,brand-story-ar,"Inspired by Wonderworld—Without the Costume
+
+The world of Rabbit Hole is shaped by Wonderworld, but not as fantasy. It’s the feeling of crossing into something different—without anyone noticing the moment it happens. A familiar scene with one impossible detail. A quiet distortion. A doorway where there shouldn’t be one. That tension—between real and unreal—is where the brand lives. Always cinematic. Always elegant. Never loud.
+
+Designed to Speak Without Explaining
+
+Rabbit Hole doesn’t shout logos or rely on noise. It communicates through silhouette, texture, light, and mood. Through what’s left unsaid. Through confidence that doesn’t need approval.
+
+Each Drop Is a Chapter
+
+Rabbit Hole isn’t one message repeated forever. Every collection arrives with its own atmosphere—its own line, its own visual language, its own reason to exist. The story evolves, but the signature stays the same: polished, mysterious, and composed.
+
+Enter Quietly. Leave Different.
+
+Rabbit Hole is built for gentle men who notice details most people miss. And for those who prefer their luxury to be felt—not announced.","مستوحاة من عالم العجائب بلا تنكّر
+
+عالم رابت هول يستمد روحه من Wonderworld، لا كخيالٍ صريح، بل كإحساس بالعبور إلى شيء مختلف دون أن تُرصد لحظة التحوّل. مشهد مألوف… يتخلله تفاصيل المستحيل. انحراف خافت عن الواقع. بابٌ حيث لا يفترض أن يكون باب. ذلك التوتر الدقيق بين الحقيقي وغير الحقيقي هو المساحة التي تعيش فيها العلامة. بطابع سينمائي، أنيق، وهادئ.
+
+مصممة لتتحدث دون شرح
+
+لا ترفع صوتها بالشعارات، ولا تعتمد على الضجيج لتُرى. هي تتحدث عبر القَصّة، الملمس، الضوء، والحالة. عبر ما يُترك بلا تفسير، حضور لا يطلب إذنًا، ثقة لا تنتظر تصديقًا، تلك هي رابت هول
+
+كل إصدار هو فصل
+
+كل مجموعة تأتي بمناخها الخاص، بخطّها الخاص، بلغتها البصرية الخاصة، وبسببها الخاص للوجود. ليست فكرة تُعاد بلا نهاية. القصة تتبدّل... لكن التوقيع يبقى: مصقول، غامض، متزن.
+
+ادخل بهدوء. وغادر مختلفًا
+
+صممت رابت هول للجنتلمان الذين يلاحظون ما لا يُلاحظ. ولمن يفضلون أن تُحس فخامتهُم..",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+full source document,collection-story-ar,"A Swimwear Collection for Season 27
+
+Rabbit Hole exists for gentle men who don’t treat swimwear as an afterthought. It was created to bring the same standards found in High end fashion—precision, restraint, and detail—into what you wear when the heat rises and the water calls. Pieces that feel composed, look intentional, and hold their presence whether you’re poolside, on a coastline, or stepping into the city after.","تشكيلة ملابس سباحة لموسم ٢٧
+
+رابت هول للجنتلمان الذين يرون ملابس السباحة امتدادًا لأسلوبهم وليست مجرد تفصيلة ثانوية. صُممت لنقل معايير الأزياء الراقية—الدقة، الاتزان، والاهتمام بالتفاصيل—إلى ما ترتديه عندما ترتفع الحرارة ويناديك الماء. قطع متقنة، ومحسوبة بعناية، تحافظ على حضورها سواء كنت بجانب المسبح، على الساحل، أو متجهًا إلى المدينة بعد ذلك.",,UNREVIEWED ARABIC; source status=source_extracted,https://darkturquoise-dunlin-447124.hostingersite.com/brand-story
+full source document,product-support-draft-ar,"We provide expedited shipping for all orders to ensure your purchase arrives timely and safely.
+
+We accept all major credit and debit cards as well as modern digital payment options.
+
+All transactions are processed through fully encrypted and secure payment gateways.
+
+Due to the nature of swimwear, we cannot accept returns for hygiene reasons. Exchanges are only permitted for clear manufacturing defects reported within 7 days.
+
+We provide expedited shipping for all orders to ensure your purchase arrives timely and safely. We take special care with every piece to ensure an exceptional shopping experience.
+
+Once your order is shipped, you will receive an email with a tracking number to follow your shipment.
+
+We use the latest encryption technologies to ensure the security of your financial information. Your privacy and security are our top priority.
+
+We accept all major credit and debit cards (Visa, Mastercard, AMEX) as well as modern digital payment options.
+
+We aim to ensure your total satisfaction. Please review our exchange policy carefully to ensure a smooth process.
+
+Any defect must be reported within 7 days of receipt. The item must be in its original condition, unworn, and with all original tags attached.
+
+Our transparency is the foundation of your trust. We invite you to review our official policies to better understand your rights and our obligations.","نحن نقدم خدمة التوصيل السريع لجميع الطلبات لضمان وصول مشترياتك في الوقت المناسب وبأمان.
+
+نحن نقبل جميع بطاقات الائتمان والخصم الرئيسية بالإضافة إلى خيارات الدفع الإلكتروني الحديثة.
+
+تتم جميع المعاملات عبر بوابات دفع مشفرة وآمنة تماماً.
+
+نظراً لطبيعة المنتجات (ملابس السباحة)، لا يمكننا قبول المرتجعات لأسباب صحية. يتم الاستبدال فقط في حالة وجود عيوب مصنعية واضحة تبلغ عنها في غضون 7 أيام.
+
+نحن نقدم خدمة التوصيل السريع لجميع الطلبات لضمان وصول مشترياتك في الوقت المناسب وبأمان. نولي اهتماماً خاصاً بكل قطعة لضمان تجربة تسوق استثنائية.
+
+بمجرد شحن طلبك، ستتلقى بريداً إلكترونياً يحتوي على رقم التتبع لمتابعة مسار شحنتك.
+
+نحن نستخدم أحدث تقنيات التشفير لضمان أمان معلوماتك المالية. خصوصيتك وأمانك هما أولويتنا القصوى.
+
+نحن نقبل جميع بطاقات الائتمان والخصم الرئيسية (Visa, Mastercard, AMEX) بالإضافة إلى خيارات الدفع الإلكتروني الحديثة.
+
+نحن نهدف لضمان رضاك التام. يرجى مراجعة سياسة الاستبدال الخاصة بنا بعناية لضمان عملية سلسة.
+
+يجب الإبلاغ عن أي عيب خلال 7 أيام من الاستلام. يجب أن تكون القطعة في حالتها الأصلية، غير مستخدمة، ومع جميع الملصقات الأصلية.
+
+شفافيتنا هي أساس ثقتكم. ندعوكم لمراجعة سياساتنا الرسمية لفهم حقوقكم والتزاماتنا بشكل أفضل.",,UNREVIEWED ARABIC; source status=needs_review,https://darkturquoise-dunlin-447124.hostingersite.com/collection
+full source document,contact-ar,"Rabbit Hole
+
+info@rabbithole.ae
+
+Dubai, UAE","Rabbit Hole
+
+info@rabbithole.ae
+
+Dubai, UAE",,UNREVIEWED ARABIC; source status=render_verified,https://darkturquoise-dunlin-447124.hostingersite.com/
+real evaluation answer,case-10 question=ما هي مهلة الإبلاغ عن عيب تصنيع؟ cited=refund-ar-3,"According to the refund policy, you should contact Rabbit Hole within 7 days of the delivery date to report a manufacturing defect. They will inspect the product and replace it if the defect is confirmed.",يجب الإبلاغ عن العيب المصنعي خلال 7 أيام من تاريخ الاستلام، وذلك لكي يتم فحص المنتج واستبداله في حالة التأكد من وجود العيب.,,UNREVIEWED ARABIC; eval=PASS,
+real evaluation answer,"case-11 question=هل يمكنني إرجاع القطعة بعد تجربتها؟ cited=refund-ar-2,refund-ar-3","According to the refund policy, due to hygiene reasons, returns or exchanges are not accepted for any swimwear item that has been opened or tried on, except in the case of a manufacturing defect.",وفقاً لسياسة الوقاية، لا يمكن إرجاع أو استبدال أي قطعة تم فتحها أو تجربتها، إلا في حالة وجود عيب مصنعي. في حال وجود عيب، يجب التواصل خلال 7 أيام من تاريخ الاستلام.,,UNREVIEWED ARABIC; eval=PASS,
+offline demo only,demo.html literal 16,Original mock text; not a production-model answer,طلبي,,UNREVIEWED,
+offline demo only,demo.html literal 17,Original mock text; not a production-model answer,لا أستطيع الاطلاع على الطلبات. راسل info@rabbithole.ae مع تفاصيل طلبك.,,UNREVIEWED,
+offline demo only,demo.html literal 19,Original mock text; not a production-model answer,وفق سياسة الاستحقاق، يجب التواصل معنا خلال 7 أيام من تاريخ الاستلام عند وجود عيب مصنعي، وسنفحص المنتج قبل الاستبدال.,,UNREVIEWED,
+offline demo only,demo.html literal 20,Original mock text; not a production-model answer,سياسة الاستحقاق,,UNREVIEWED,
