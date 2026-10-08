@@ -82,6 +82,47 @@ async def _keyword_search(conn, tsq, lang, statuses, k) -> list[asyncpg.Record]:
     )
 
 
+def lexical_tsquery(text: str, language: str) -> str:
+    if language == "ar":
+        text = re.sub(r"[\u064b-\u065f\u0670\u0640]", "", text).translate(str.maketrans("أإآى", "اااي"))
+    tokens = keyword_tsquery(text).split(" | ")
+    if language == "ar":
+        # Articles and common pronoun suffixes vary in visitor phrasing. Prefix matching
+        # covers inflections, without inventing facts or translating source content.
+        variants = []
+        for token in tokens:
+            stem = token[2:] if token.startswith("ال") and len(token) > 4 else token
+            if stem.endswith("ها") and len(stem) > 4:
+                stem = stem[:-2]
+            variants.extend([token, stem, "ال" + stem])
+            if stem in {"ارجاع", "ارجع", "اعاده"}:
+                variants.extend(["استرجاع", "الاسترجاع"])
+        tokens = list(dict.fromkeys(t for t in variants if len(t) > 2))
+    return " | ".join(token + (":*" if language == "ar" else "") for token in tokens if token)
+
+
+async def _lexical_search(conn, query, lang, statuses, k) -> list[asyncpg.Record]:
+    tsq = lexical_tsquery(query, lang)
+    if not tsq:
+        return []
+    config = "english" if lang == "en" else "simple"
+    # At 60 chunks a normalized full-text scan is cheap. The hybrid mode's GIN
+    # index remains unchanged, and both modes enforce language/status filters.
+    text = "coalesce(title,'') || ' ' || coalesce(heading,'') || ' ' || text"
+    if lang == "ar":
+        text = "translate(regexp_replace(" + text + ", '[\u064b-\u065f\u0670\u0640]', '', 'g'), 'أإآى', 'اااي')"
+    vector = f"to_tsvector('{config}', {text})"
+    q = f"to_tsquery('{config}', $3)"
+    return await conn.fetch(
+        f"SELECT {COLS} FROM (SELECT DISTINCT ON (document_id) {COLS}, "
+        f"ts_rank_cd({vector}, {q}) AS lexical_rank FROM chunks "
+        f"WHERE language=$1 AND verification_status = ANY($2::text[]) AND {vector} @@ {q} "
+        f"ORDER BY document_id, lexical_rank DESC, chunk_id) hits "
+        f"ORDER BY lexical_rank DESC, document_id LIMIT $4",
+        lang, statuses, tsq, k,
+    )
+
+
 def rrf_fuse(*ranked: list[asyncpg.Record]) -> list[tuple[asyncpg.Record, float]]:
     scores: dict[str, float] = {}
     rows: dict[str, asyncpg.Record] = {}
@@ -113,18 +154,22 @@ async def retrieve(
     always_documents: list[str] | None = None,
 ) -> list[Chunk]:
     statuses = s.allowed_statuses
-    qvec = np.array((await embedder.embed([query]))[0], dtype=np.float32)
     tsq = keyword_tsquery(query)
 
     async def run(fn, *a):
         async with pool.acquire() as conn:
             return await fn(conn, *a)
 
-    vec_rows, kw_rows = await asyncio.gather(
-        run(_vector_search, qvec, language, statuses, s.top_k),
-        run(_keyword_search, tsq, language, statuses, s.top_k),
-    )
-    fused = rrf_fuse(vec_rows, kw_rows)[: s.final_k]
+    if s.retrieval_mode == "keyword":
+        kw_rows = await run(_lexical_search, query, language, statuses, s.top_k)
+        fused = rrf_fuse(kw_rows)[:s.final_k]
+    else:
+        qvec = np.array((await embedder.embed([query]))[0], dtype=np.float32)
+        vec_rows, kw_rows = await asyncio.gather(
+            run(_vector_search, qvec, language, statuses, s.top_k),
+            run(_keyword_search, tsq, language, statuses, s.top_k),
+        )
+        fused = rrf_fuse(vec_rows, kw_rows)[:s.final_k]
     chunks = [_row_to_chunk(r, sc) for r, sc in fused]
 
     # Reserve mandatory documents before allocating the evidence budget.

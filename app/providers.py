@@ -36,6 +36,16 @@ def _client(s: Settings, *, chat: bool = False) -> AsyncOpenAI:
                        base_url=base_url or "https://api.openai.com/v1")
 
 
+class KeywordOnlyEmbedder:
+    """No model is loaded; any accidental embedding request must fail loudly."""
+    async def embed(self, texts: list[str]) -> list[list[float]]:
+        raise RuntimeError("Embedding calls are disabled in keyword retrieval mode")
+
+
+def build_embedder(s: Settings) -> Embedder:
+    return KeywordOnlyEmbedder() if s.retrieval_mode == "keyword" else OpenAIEmbedder(s)
+
+
 class OpenAIEmbedder:
     BATCH = 96
 

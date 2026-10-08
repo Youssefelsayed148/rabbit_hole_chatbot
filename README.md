@@ -98,6 +98,16 @@ The approved real run passed the five-case smoke; quality was 13/14 overall and
 14/14 grounded. It made 56 OpenAI requests at an estimated cost of $0.0167;
 [usage and rate sources](docs/docker-real-results/usage-summary.md).
 
+## PostgreSQL-only search (no OpenAI key)
+
+The environment templates now select `RETRIEVAL_MODE=keyword`. This mode loads no embedding model, sends no embedding requests, and needs only `CHAT_API_KEY` for the free OpenRouter chat configuration. Leave `OPENAI_API_KEY` blank. The live catalogue remains independent of retrieval mode.
+
+Approved source chunks are indexed in PostgreSQL. English search uses stemming; Arabic search normalizes spelling/diacritics and supports prefix matching. Results stay language-filtered, excluded drafts stay excluded, and small policies expand with all conditions. Keyword search is weaker for paraphrases and typos than semantic search.
+
+Existing document vectors remain untouched when source content is unchanged. New/changed keyword-mode chunks have NULL vectors. To restore semantic search, select `RETRIEVAL_MODE=hybrid` and supply `OPENAI_API_KEY`: startup fills missing/changed embeddings. Do not change embedding dimensions on an existing database. The Compose database still includes pgvector for compatibility; keyword mode does not run vector search.
+
+After changing environment values, recreate the service so it receives them. On the VPS use the production Compose command above; locally use `docker compose --profile real up -d --build api-real`. Check `/health` for `retrieval_mode: keyword`. Verified with 264 offline tests (3 opt-in checks skipped), production startup with no OpenAI key, and live English/Arabic policy, product and size-follow-up requests. These checks cover the current small corpus, not every possible paraphrase.
+
 ## API
 
 `POST /chat` — headers: `X-Site-Key` (public key), JSON body:

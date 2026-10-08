@@ -199,6 +199,40 @@ def resolve_reference(query: str, lists: list[list[dict]]) -> tuple[str, bool]:
     return query, False
 
 
+def available_sizes_answer(query: str, products: list[dict], language: str) -> str | None:
+    """Render simple size lists from verified availability flags, without model inference."""
+    if not re.search(r"\bsizes\b|\b(?:what|which) size\b|المقاسات|مقاسات", query, re.I):
+        return None
+    if re.search(r"\b(?:chart|fit|fitting|recommend|choose|wear|height|weight|price|refund|exchange)\b|جدول|طول|وزن|اختار|اختر|سعر|استرجاع|استبدال", query, re.I):
+        return None
+    sections = []
+    for product in products:
+        variants = product.get('variants', [])
+        colors = {c['id']: c['label'] for c in product.get('colors', [])}
+        if not variants or any('colorId' not in v or type(v.get('available')) is not bool for v in variants):
+            return None
+        groups = {}
+        for v in variants:
+            if v['available']:
+                label = colors.get(v['colorId'])
+                if not label:
+                    return None
+                groups.setdefault(label, [])
+                if v['size'] not in groups[label]:
+                    groups[label].append(v['size'])
+        title = f"**{product['name']}**"
+        if not groups:
+            sections.append(title + ("\nلا توجد مقاسات متاحة حاليًا." if language == 'ar' else "\nNo sizes are currently available."))
+        else:
+            order = {'XXS':0, 'XS':1, 'S':2, 'M':3, 'L':4, 'XL':5, 'XXL':6, 'XXXL':7}
+            lines = []
+            for color, sizes in groups.items():
+                sizes.sort(key=lambda size: (order.get(size.upper(), 99), size))
+                lines.append(f"- **{color}:** " + ", ".join(sizes))
+            sections.append(title + ("\nالمقاسات المتاحة:\n" if language == 'ar' else "\nAvailable sizes:\n") + "\n".join(lines))
+    return "\n\n".join(sections) if sections else None
+
+
 def live_data_note(result: CatalogueResult | None) -> str:
     if result is None:
         return "Not applicable for this question."

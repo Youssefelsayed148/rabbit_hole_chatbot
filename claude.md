@@ -11,8 +11,8 @@ Separate FastAPI service answering visitors' questions for Rabbit Hole (luxury m
 ## Layout
 - `app/pipeline.py`: chat flow: route, condense, retrieve, live-data note, grounded generation, cited result
 - `app/router.py`: language detection + rule-based intents (knowledge / product / shipping / order / smalltalk)
-- `app/retrieval.py`: hard language filter, vector + keyword search, RRF fusion, small-document expansion, always-on contact doc
-- `app/ingest.py`: hash-diff ingest from `data/` (only changed chunks re-embedded; one transaction)
+- `app/retrieval.py`: hard language filter, PostgreSQL keyword mode (no embedding model) or hybrid vector + keyword search with RRF, small-document expansion, always-on contact doc
+- `app/ingest.py`: hash-diff ingest from `data/` (keyword mode skips embeddings; hybrid embeds changes/missing vectors; one transaction)
 - `app/prompts.py`: system prompt and evidence formatting. Brand facts belong in `data/`, not in prompts
 - `app/catalogue.py`: verified public website catalogue adapter (optional, fresh commerce data)
 - `app/security.py`, `app/main.py`: site key, origin allowlist, rate/daily limits, admin auth, endpoints

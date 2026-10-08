@@ -121,19 +121,24 @@ async def _run_ingest_locked(conn: asyncpg.Connection, embedder: Embedder, s: Se
     source = load_source_chunks(s)
     hashes = {c.chunk_id: chunk_hash(c, s.embed_model, s.embed_dimensions) for c in source}
 
-    existing = {r["chunk_id"]: r["content_hash"] for r in await conn.fetch("SELECT chunk_id, content_hash FROM chunks")}
+    rows = await conn.fetch("SELECT chunk_id, content_hash, embedding IS NOT NULL AS has_embedding FROM chunks")
+    existing = {r["chunk_id"]: r["content_hash"] for r in rows}
+    missing_vectors = {r["chunk_id"] for r in rows if not r["has_embedding"]}
 
-    to_embed = [c for c in source if existing.get(c.chunk_id) != hashes[c.chunk_id]]
+    to_embed = [c for c in source if existing.get(c.chunk_id) != hashes[c.chunk_id] or (s.retrieval_mode == "hybrid" and c.chunk_id in missing_vectors)]
     removed = [cid for cid in existing if cid not in hashes]
 
     # Embed first (network), then apply all DB changes in one transaction so the index never half-updates.
-    vectors = await embedder.embed([c.embed_input() for c in to_embed]) if to_embed else []
-    if len(vectors) != len(to_embed):
-        raise ValueError("embedding count does not match source chunk count")
-    vectors = [np.asarray(vec, dtype=np.float32) for vec in vectors]
-    if any(vec.shape != (s.embed_dimensions,) or not np.isfinite(vec).all() for vec in vectors):
-        raise ValueError("embedding dimensions or values are invalid")
-
+    if s.retrieval_mode == "keyword":
+        # NULL is honest: no fake/zero vectors. Unchanged existing vectors are preserved.
+        vectors = [None] * len(to_embed)
+    else:
+        vectors = await embedder.embed([c.embed_input() for c in to_embed]) if to_embed else []
+        if len(vectors) != len(to_embed):
+            raise ValueError("embedding count does not match source chunk count")
+        vectors = [np.asarray(vec, dtype=np.float32) for vec in vectors]
+        if any(vec.shape != (s.embed_dimensions,) or not np.isfinite(vec).all() for vec in vectors):
+            raise ValueError("embedding dimensions or values are invalid")
     async with conn.transaction():
         for c, vec in zip(to_embed, vectors):
             await conn.execute(
@@ -157,7 +162,8 @@ async def _run_ingest_locked(conn: asyncpg.Connection, embedder: Embedder, s: Se
 
     summary = {
         "total_source_chunks": len(source),
-        "embedded": len(to_embed),
+        "embedded": len(to_embed) if s.retrieval_mode == "hybrid" else 0,
+        "indexed": len(to_embed),
         "unchanged": len(source) - len(to_embed),
         "deleted": len(removed),
         "include_unreviewed": s.include_unreviewed,

@@ -15,7 +15,7 @@ from .config import Settings, get_settings
 from .db import create_pool, init_schema
 from .ingest import run_ingest
 from .pipeline import ChatService
-from .providers import ChatModel, Embedder, OpenAIChat, OpenAIEmbedder
+from .providers import ChatModel, Embedder, OpenAIChat, OpenAIEmbedder, build_embedder
 from .security import DailyCap, RateLimiter, check_admin, check_public_access, client_ip
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
@@ -61,7 +61,7 @@ def create_app(
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         s.validate_startup()
-        emb = embedder or OpenAIEmbedder(s)   # raises a clear error if OPENAI_API_KEY is missing
+        emb = embedder or build_embedder(s)
         chat = llm or OpenAIChat(s)
         log.info("providers embedder=%s chat=%s model=%s", type(emb).__name__, type(chat).__name__, s.chat_model)
         await init_schema(s.database_url, s.embed_dimensions)
@@ -99,7 +99,7 @@ def create_app(
     @app.get("/health")
     async def health(request: Request):
         n = await request.app.state.pool.fetchval("SELECT count(*) FROM chunks")
-        result = {"status": "ok" if n else "empty_index", "chunks": n}
+        result = {"status": "ok" if n else "empty_index", "chunks": n, "retrieval_mode": s.retrieval_mode}
         if s.environment.strip().lower() == "development":
             service = request.app.state.service
             result["providers"] = {

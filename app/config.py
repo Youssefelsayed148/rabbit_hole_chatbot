@@ -29,6 +29,7 @@ class Settings:
     chat_model: str = "gpt-4.1-mini"
     # Reasoning models reject a custom temperature; leave unset (None) for those.
     temperature: float | None = 0.2
+    retrieval_mode: str = "hybrid"  # hybrid embeddings or PostgreSQL-only keyword search
     embed_model: str = "text-embedding-3-large"
     # Fixed at schema-creation time. 1024 keeps us under pgvector's index limits.
     embed_dimensions: int = 1024
@@ -84,6 +85,8 @@ class Settings:
         return s
 
     def validate_startup(self) -> None:
+        if self.retrieval_mode not in {"hybrid", "keyword"}:
+            raise ValueError("RETRIEVAL_MODE must be hybrid or keyword")
         if self.environment.strip().lower() != "production":
             return
         required = {
@@ -105,6 +108,7 @@ class Settings:
             openai_api_key=e.get("OPENAI_API_KEY", ""),
             chat_model=e.get("OPENAI_CHAT_MODEL", d.chat_model),
             temperature=_float_or_none("OPENAI_TEMPERATURE") if "OPENAI_TEMPERATURE" in e else d.temperature,
+            retrieval_mode=e.get("RETRIEVAL_MODE", "hybrid").strip().lower(),
             embed_model=e.get("OPENAI_EMBED_MODEL", d.embed_model),
             embed_dimensions=int(e.get("EMBED_DIMENSIONS", d.embed_dimensions)),
             openai_timeout=float(e.get("OPENAI_TIMEOUT", d.openai_timeout)),

@@ -12,6 +12,7 @@ x-dev-env: &dev-env
   INCLUDE_UNREVIEWED: 'false'
 x-real-env: &real-env
   <<: *dev-env
+  RETRIEVAL_MODE: ${RETRIEVAL_MODE:-hybrid}
   OPENAI_API_KEY: ${OPENAI_API_KEY:-}
   OPENAI_CHAT_MODEL: ${OPENAI_CHAT_MODEL:-gpt-4.1-mini}
   OPENAI_EMBED_MODEL: ${OPENAI_EMBED_MODEL:-text-embedding-3-large}

@@ -23,12 +23,13 @@ CREATE TABLE IF NOT EXISTS chunks (
     content_hash        text NOT NULL,
     verification_status text NOT NULL,
     source_updated_at   text,
-    embedding           vector({dims}) NOT NULL,
+    embedding           vector({dims}),
     fts                 tsvector GENERATED ALWAYS AS (
         to_tsvector('simple', coalesce(title,'') || ' ' || coalesce(heading,'') || ' ' || text)
     ) STORED,
     updated_at          timestamptz NOT NULL DEFAULT now()
 );
+ALTER TABLE chunks ALTER COLUMN embedding DROP NOT NULL;
 CREATE INDEX IF NOT EXISTS chunks_lang_idx ON chunks (language);
 CREATE INDEX IF NOT EXISTS chunks_doc_idx  ON chunks (document_id);
 CREATE INDEX IF NOT EXISTS chunks_fts_idx  ON chunks USING gin (fts);

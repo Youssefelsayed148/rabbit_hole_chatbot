@@ -417,3 +417,19 @@ async def test_ambiguous_followup_asks_instead_of_guessing(svc, chat_model, monk
     monkeypatch.setattr(catalogue, 'lookup', unexpected)
     result = await svc.answer('What sizes are available?', conversation_id=cid)
     assert 'Which product' in result.answer and not result.products and not chat_model.calls
+
+
+async def test_size_followup_answers_from_live_variants_without_model_confusion(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True, retrieval_mode='keyword')
+    cid=await svc._resolve_conversation(None)
+    await svc._save(cid,'browse','products',products=[{'slug':'dubai','name':'Dubai'},{'slug':'wonders','name':'Wonders'}])
+    async def live(query, language, **kwargs):
+        assert query.endswith('Product: wonders')
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK,[{'slug':'wonders','name':'Wonders','url':catalogue.STORE_BASE+'/collection','colors':[{'id':'blue','label':'Blue'}],'variants':[{'colorId':'blue','size':'M','available':False}]}])
+    monkeypatch.setattr(catalogue,'lookup',live)
+    result=await svc.answer('What sizes are available for the second product?',conversation_id=cid)
+    assert 'Wonders' in result.answer and 'No sizes are currently available' in result.answer
+    assert not result.needs_human and result.sources[0]['document_id']=='catalogue-en'
+    assert not [c for c in chat_model.calls if c['json_mode']]

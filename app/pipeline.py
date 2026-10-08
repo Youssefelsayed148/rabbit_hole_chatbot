@@ -247,6 +247,14 @@ class ChatService:
             await self._save(cid, message, reply)
             return ChatResult(reply, cid, language, intent.label, needs_human=bool(intent & Intent.ORDER_ACCOUNT))
 
+        if intent == Intent.PRODUCT_LIVE and cat and cat.products:
+            size_answer = catalogue.available_sizes_answer(message, cat.products, language)
+            if size_answer:
+                sources = [{"title": "Product collection" if language == "en" else "تشكيلة المنتجات",
+                            "url": cat.products[0]["url"], "document_id": "catalogue-" + language}]
+                await self._save(cid, message, size_answer, products=cat.products)
+                return ChatResult(size_answer, cid, language, intent.label, sources=sources, products=cat.products)
+
         messages = [{"role": "system", "content": SYSTEM_PROMPT}, *history,
                     {"role": "user", "content": build_user_turn(
                         message, language, chunks, catalogue.live_data_note(cat),

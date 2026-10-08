@@ -151,3 +151,21 @@ async def test_inventory_counts_never_reach_model_or_browser(monkeypatch, quanti
     assert result.products[0]['variants'] == [{'colorId': 'white', 'size': 'M', 'available': available}]
     assert '"stock":' not in json.dumps(result.products)
     assert '"stock":' not in catalogue.live_data_note(result)
+
+
+@pytest.mark.parametrize('lang', ['en','ar'])
+@pytest.mark.parametrize('available', [True,False])
+def test_size_summary_uses_only_live_availability_without_counts(lang, available):
+    product={'name':'Wonders', 'colors':[{'id':'blue','label':'Blue'}], 'variants':[{'colorId':'blue','size':'M','available':available}]}
+    query='What sizes are available for the second product?' if lang=='en' else 'ما المقاسات المتاحة للمنتج الثاني؟'
+    answer=catalogue.available_sizes_answer(query,[product],lang)
+    assert 'Wonders' in answer and 'stock' not in answer
+    if available:
+        assert 'Blue' in answer and 'M' in answer
+    else:
+        assert 'Blue' not in answer and 'M' not in answer
+
+
+def test_size_advice_and_incomplete_variants_are_not_treated_as_availability():
+    assert catalogue.available_sizes_answer('What sizes fit my height?', [], 'en') is None
+    assert catalogue.available_sizes_answer('What sizes are available?', [{'variants':[]}], 'en') is None

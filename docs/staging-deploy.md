@@ -12,10 +12,10 @@ unless the RAG service and database are hosted separately.
 - [ ] Approve Arabic content/UI with the review pack. Keep the shipping/payments draft excluded.
 - [ ] Rotate the previously exposed LLM token; keep the new OpenAI key and admin token in backend secrets only.
 - [ ] Copy `.env.production.example` into the hosting secret store or ignored `.env.production`.
-- [ ] Set `ENV=production`, `OPENAI_API_KEY`, a random `ADMIN_TOKEN`, `SITE_KEYS`, `ALLOWED_ORIGINS`, and `DATABASE_URL`.
+- [ ] Set `ENV=production`, `RETRIEVAL_MODE=keyword`, `CHAT_API_KEY`, a random `ADMIN_TOKEN`, `SITE_KEYS`, `ALLOWED_ORIGINS`, and `DATABASE_URL`.
 - [ ] For the optional container template, set a strong `POSTGRES_PASSWORD`. Use a random hex/alphanumeric password to avoid DSN URL-encoding issues. It overrides `DATABASE_URL` with its private `db` service address.
 - [ ] Use `CATALOGUE_ENABLED=true` for the verified public shop adapter; keep `INCLUDE_UNREVIEWED=false`, `LOG_MESSAGES=false`.
-- [ ] Set `CHAT_API_KEY` to the OpenRouter key. The production template uses the tested free Gemma setup with explicit free fallbacks. `OPENAI_API_KEY` is still required for embeddings. Confirm model IDs/account access, token budget, timeout and embedding dimensions. A different dimension needs a fresh database; never reuse a fake-embedding index for real embeddings.
+- [ ] Set `CHAT_API_KEY` to the OpenRouter key. The production template uses the tested free Gemma setup with explicit free fallbacks. `OPENAI_API_KEY` is not required in keyword mode; it is required only if switching back to `RETRIEVAL_MODE=hybrid`. Confirm model IDs/account access, token budget, timeout and embedding dimensions. A different dimension needs a fresh database; never reuse a fake-embedding index for real embeddings.
 - [ ] Decide message retention and whether to set `STORE_MESSAGES=false`; configure backups for the persistent database.
 
 `SITE_KEYS` is a comma-separated list of public widget keys. The script's `data-site-key`
