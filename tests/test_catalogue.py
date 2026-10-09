@@ -30,7 +30,7 @@ async def test_live_schema_price_vat_variants_and_localized_detail(monkeypatch):
     result = await catalogue.lookup("Show products", "ar", enabled=True)
     assert result.status is catalogue.CatalogueStatus.OK
     product = result.products[0]
-    assert product["price"] == 1365 and product["price_includes_vat"] is True
+    assert product["price"] == 1300 and product["price_includes_vat"] is True
     assert product["variants"][0]["available"] is True and product["in_stock"] is True
     assert "stock" not in product["variants"][0]
     assert calls[-1].endswith("?locale=ar")
@@ -44,17 +44,53 @@ async def test_disabled_catalogue_never_calls_network(monkeypatch):
     assert (await catalogue.lookup("products", "en", enabled=False)).status is catalogue.CatalogueStatus.NOT_CONNECTED
 
 
-@pytest.mark.parametrize("failure", ["network", "missing_vat", "invalid_stock", "wrong_slug", "missing_arabic"])
+@pytest.mark.parametrize("vat_field", ["original", "missing", "changed"])
+async def test_customer_prices_never_include_added_vat(monkeypatch, vat_field):
+    items = [summary(),
+             {**summary(), "id": "35", "slug": "wonders-of-the-world", "name": "Wonders of the World",
+              "price": 200, "priceAfterVat": 210},
+             {**summary(), "id": "29", "slug": "glitched", "name": "Glitched",
+              "price": 200, "priceAfterVat": 210}]
+    for item in items:
+        if vat_field == "missing":
+            del item["priceAfterVat"]
+        elif vat_field == "changed":
+            item["priceAfterVat"] = "invalid VAT field"
+
+    async def fetch(path, **kwargs):
+        if "?page=" in path:
+            return {"items": items, "page": 1, "totalPages": 1}
+        item = next(item for item in items if f"/{item['slug']}?" in path)
+        value = {**detail(), **item}
+        if vat_field == "missing":
+            del value["priceAfterVat"]
+        return value
+
+    monkeypatch.setattr(catalogue, "fetch_json", fetch)
+    result = await catalogue.lookup("Show products and prices", "en", enabled=True)
+    assert result.status is catalogue.CatalogueStatus.OK
+    assert [product["price"] for product in result.products] == [1300, 200, 200]
+    assert all(product["price_includes_vat"] is True for product in result.products)
+    note = catalogue.live_data_note(result)
+    assert "1365" not in json.dumps(result.products) and "210" not in json.dumps(result.products)
+    assert "1365" not in note and "210" not in note
+    assert "Prices include VAT." in note
+    assert "Quote the price exactly as given in the product data." in note
+    assert "Never add VAT or any tax on top, and never say VAT is extra." in note
+
+
+@pytest.mark.parametrize("failure", ["network", "missing_price", "missing_detail_price", "invalid_stock", "wrong_slug", "missing_arabic"])
 async def test_bad_or_unavailable_catalogue_never_means_sold_out(monkeypatch, failure):
     async def fetch(path, **kwargs):
         if failure == "network":
             raise TimeoutError("offline")
         if "?page=" in path:
             item = summary()
-            if failure == "missing_vat": del item["priceAfterVat"]
+            if failure == "missing_price": del item["price"]
             if failure == "invalid_stock": item["inStock"] = "true"
             return {"items": [item], "page": 1, "totalPages": 1}
         value = detail()
+        if failure == "missing_detail_price": del value["price"]
         if failure == "wrong_slug": value["slug"] = "wrong-product"
         return value
     monkeypatch.setattr(catalogue, "fetch_json", fetch)
