@@ -165,6 +165,9 @@
     transform-origin: bottom ${cfg.position}; transition: opacity .28s ease, transform .28s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s; }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .panel { background: #0b0b0b; } }
   .root:not([data-open]) .panel { opacity: 0; visibility: hidden; transform: translateY(10px) scale(.97); transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s; pointer-events: none; }
+  /* The host/root boxes span the (hidden) panel too, so they must not catch clicks: only the launcher and an open panel do. */
+  :host, .root { pointer-events: none; }
+  .launcher, .root[data-open] .panel { pointer-events: auto; }
 
   header { display: flex; align-items: center; gap: 12px; padding-block: 16px; padding-inline: 24px 16px; background: rgba(0,0,0,.8); }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.8); flex: none; }
