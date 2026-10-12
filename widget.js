@@ -159,18 +159,18 @@
   button { font: inherit; color: inherit; cursor: pointer; }
   :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-  .panel { width: 380px; height: min(580px, calc(100dvh - 112px)); display: flex; flex-direction: column; overflow: hidden;
-    background: rgba(10,10,10,.84); -webkit-backdrop-filter: blur(20px) saturate(1.15); backdrop-filter: blur(20px) saturate(1.15);
-    border: 1px solid rgba(255,255,255,.14); border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  .panel { width: min(360px, calc(100vw - 32px)); height: min(460px, calc(100dvh - 112px)); display: flex; flex-direction: column; overflow: hidden;
+    background: rgba(255,255,255,.05); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    border-radius: 16px;
     transform-origin: bottom ${cfg.position}; transition: opacity .28s ease, transform .28s cubic-bezier(.2,.8,.2,1), visibility 0s linear 0s; }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .panel { background: #0b0b0b; } }
   .root:not([data-open]) .panel { opacity: 0; visibility: hidden; transform: translateY(10px) scale(.97); transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s; pointer-events: none; }
 
-  header { display: flex; align-items: center; gap: 12px; padding-block: 16px 14px; padding-inline: 20px 12px; background: rgba(0,0,0,.42); border-block-end: 1px solid rgba(255,255,255,.1); }
+  header { display: flex; align-items: center; gap: 12px; padding-block: 16px; padding-inline: 24px 16px; background: rgba(0,0,0,.8); }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,.8); flex: none; }
   .who { display: flex; flex-direction: column; min-width: 0; flex: 1; line-height: 1.25; }
-  .who strong { font-weight: 500; font-size: 16px; }
-  .who span { font-size: 12px; color: rgba(255,255,255,.62); }
+  .who strong { font-weight: 400; font-size: 16px; }
+  .who span { display: none; }
   .icon { width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: rgba(255,255,255,.75); transition: background .15s, color .15s; }
   .icon:hover { background: rgba(255,255,255,.12); color: #fff; }
 
@@ -178,9 +178,9 @@
   .msg { display: flex; flex-direction: column; gap: 8px; max-width: 86%; }
   .msg.user { align-self: flex-end; }
   .msg.bot { align-self: flex-start; }
-  .bubble { padding: 12px 16px; border-radius: 18px; font-size: 15px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
-  .user .bubble { background: #fff; color: #0a0a0a; border-end-end-radius: 6px; }
-  .bot .bubble { white-space: normal; background: rgba(255,255,255,.1); color: #fff; border-end-start-radius: 6px; }
+  .bubble { padding: 16px; border-radius: 16px; font-size: 14px; line-height: 1.625; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .user .bubble { background: #fff; color: #0a0a0a; border-end-end-radius: 0; }
+  .bot .bubble { white-space: normal; background: rgba(255,255,255,.1); color: #fff; border-end-start-radius: 0; }
   .bubble p { margin: 0; white-space: pre-wrap; }
   .bubble p + p, .bubble ul + p, .bubble ol + p { margin-block-start: 12px; }
   .bubble ul, .bubble ol { margin: 10px 0; padding-inline-start: 20px; }
@@ -217,35 +217,29 @@
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
   form { position: relative; padding: 10px 18px 18px; }
-  textarea { display: block; width: 100%; resize: none; max-height: 112px; min-height: 46px; scrollbar-width: none; border-radius: 23px; border: 1px solid rgba(255,255,255,.18);
-    background: rgba(255,255,255,.08); color: #fff; font: inherit; font-size: 15px; line-height: 1.4; padding: 12px 18px; padding-inline: 18px 92px; overflow-y: auto; transition: background .15s, border-color .15s; }
+  textarea { display: block; width: 100%; resize: none; max-height: 112px; min-height: 46px; scrollbar-width: none; border-radius: 23px; border: 0;
+    background: rgba(255,255,255,.05); color: #fff; font: inherit; font-size: 15px; line-height: 1.4; padding: 12px 18px; padding-inline: 18px 92px; overflow-y: auto; transition: background .15s, border-color .15s; }
   textarea::-webkit-scrollbar { display: none; }
-  textarea::placeholder { color: rgba(255,255,255,.5); }
-  textarea:focus { outline: none; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.55); }
-  .send { position: absolute; inset-block-end: 24px; inset-inline-end: 26px; height: 34px; padding: 0 16px; border: 0; border-radius: 999px; background: #fff; color: #0a0a0a; font-size: 13px; font-weight: 500; transition: opacity .15s, transform .15s; }
+  textarea::placeholder { color: rgba(255,255,255,.3); }
+  textarea:focus { outline: none; background: rgba(255,255,255,.1); }
+  .send { position: absolute; inset-block-end: 24px; inset-inline-end: 26px; height: 34px; padding: 0 16px; border: 0; border-radius: 999px; background: #000; color: #fff; font-size: 13px; font-weight: 500; transition: opacity .15s, transform .15s; }
   .send:hover:not(:disabled) { transform: scale(1.04) }
   .send:disabled { opacity: .35; cursor: not-allowed; }
   .count { position: absolute; inset-block-start: -2px; inset-inline-end: 24px; font-size: 11px; color: rgba(255,255,255,.55); }
   .count[hidden] { display: none }
 
   .launcher { position: relative; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; gap: 2px; border-radius: 50%;
-    background: rgba(0,0,0,.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.24); color: #fff;
-    font-size: 14px; font-weight: 500; transition: transform .2s ease, background .2s; }
-  .launcher:hover { transform: scale(1.05); background: rgba(0,0,0,.78); }
+    background: rgba(255,255,255,.1); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.1); color: #fff;
+    font-size: 14px; font-weight: 500; transition: background .5s ease, backdrop-filter .5s ease, -webkit-backdrop-filter .5s ease; }
+  .launcher:hover { background: rgba(255,255,255,.4); -webkit-backdrop-filter: blur(30px); backdrop-filter: blur(30px); }
   .launcher svg { width: 11px; height: 11px; transition: transform .25s ease; }
   .root[data-open] .launcher svg { transform: rotate(180deg); }
   .launcher .pip { position: absolute; inset-block-start: 5px; inset-inline-end: 5px; width: 9px; height: 9px; border-radius: 50%; background: #22c55e; border: 2px solid #0b0b0b; }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .launcher { background: #0b0b0b; } }
 
   @media (max-width: 520px) {
-    .panel { position: fixed; inset: 0; width: auto; height: 100dvh; border-radius: 0; border: 0; box-shadow: none; transform-origin: bottom center; background: rgba(10,10,10,.96); }
-    .root:not([data-open]) .panel { transform: translateY(24px); }
-    .root[data-open] .launcher { display: none; }
-    .launcher { width: 54px; height: 54px; }
-    header { padding-block-start: max(16px, env(safe-area-inset-top)); }
-    form { padding-block-end: max(18px, env(safe-area-inset-bottom)); }
+    .launcher { width: 44px; height: 44px; font-size: 11px; }
     textarea { font-size: 16px; }
-    .msg { max-width: 92%; }
   }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; } }
   `;
@@ -414,32 +408,23 @@
     }
   }
 
-  // ---- mobile keyboard: keep the sheet inside the visual viewport ----
-  const vv = window.visualViewport;
-  const fitSheet = () => {
-    if (!vv || !mobileMQ.matches || !state.open) { panel.style.height = ''; panel.style.transform = ''; return; }
-    panel.style.height = vv.height + 'px'; panel.style.transform = 'translateY(' + vv.offsetTop + 'px)';
-  };
-  if (vv) { vv.addEventListener('resize', fitSheet); vv.addEventListener('scroll', fitSheet); }
-  mobileMQ.addEventListener('change', fitSheet);
-
   // ---- public API ----
   const api = {
     version: '1.0.0',
     open() {
       if (state.open) return; state.open = true;
       root.setAttribute('data-open', ''); panel.inert = false; launcher.setAttribute('aria-expanded', 'true'); launcher.setAttribute('aria-label', t().close);
-      fitSheet(); setTimeout(() => input.focus({ preventScroll: true }), reduceMotion.matches ? 0 : 120); scrollEnd();
+      setTimeout(() => input.focus({ preventScroll: true }), reduceMotion.matches ? 0 : 120); scrollEnd();
     },
     close() {
       if (!state.open) return; state.open = false;
       root.removeAttribute('data-open'); panel.inert = true; launcher.setAttribute('aria-expanded', 'false'); launcher.setAttribute('aria-label', t().open);
-      fitSheet(); launcher.focus({ preventScroll: true });
+      launcher.focus({ preventScroll: true });
     },
     toggle() { state.open ? api.close() : api.open(); },
     setLanguage(l) { if (state.pending || (l !== 'en' && l !== 'ar')) return; state.langLocked = true; changeLanguage(l); },
     reset() { if (state.pending) return; state.msgs = []; state.convId = ''; clearSaved(); renderAll(); input.focus({ preventScroll: true }); },
-    destroy() { mo.disconnect(); if (vv) { vv.removeEventListener('resize', fitSheet); vv.removeEventListener('scroll', fitSheet); } host.remove(); delete window.RabbitHoleChat; },
+    destroy() { mo.disconnect(); host.remove(); delete window.RabbitHoleChat; },
   };
 
   // Follow the site's EN/AR toggle (<html lang|dir>) unless the language was fixed explicitly.
