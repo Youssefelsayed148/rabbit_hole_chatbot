@@ -205,3 +205,19 @@ def test_size_summary_uses_only_live_availability_without_counts(lang, available
 def test_size_advice_and_incomplete_variants_are_not_treated_as_availability():
     assert catalogue.available_sizes_answer('What sizes fit my height?', [], 'en') is None
     assert catalogue.available_sizes_answer('What sizes are available?', [{'variants':[]}], 'en') is None
+
+
+async def test_out_of_stock_products_have_no_price(monkeypatch):
+    items = [summary(), {**summary(), "id": "35", "slug": "wonders-of-the-world", "name": "Wonders of the World", "inStock": False}]
+
+    async def fetch(path, **kwargs):
+        if "?page=" in path:
+            return {"items": items, "page": 1, "totalPages": 1}
+        return {**detail(), **next(item for item in items if f"/{item['slug']}?" in path)}
+
+    monkeypatch.setattr(catalogue, "fetch_json", fetch)
+    result = await catalogue.lookup("Show products and prices", "en", enabled=True)
+    by_slug = {p["slug"]: p for p in result.products}
+    assert by_slug["dubai-above-mars"]["price"] == 1300 and by_slug["dubai-above-mars"]["price_includes_vat"] is True
+    assert by_slug["wonders-of-the-world"]["price"] is None and by_slug["wonders-of-the-world"]["price_includes_vat"] is False
+    assert "has price null" in catalogue.live_data_note(result)
