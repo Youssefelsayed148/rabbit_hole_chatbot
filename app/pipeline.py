@@ -120,6 +120,7 @@ def _public_url(url: str, base: str) -> str:
 class ChatService:
     def __init__(self, pool: asyncpg.Pool, embedder: Embedder, llm: ChatModel, settings: Settings):
         self.pool, self.embedder, self.llm, self.s = pool, embedder, llm, settings
+        self.ar_names: dict[str, str] = {}  # slug -> stored Arabic product name
         self.product_names: dict[str, str] = {}  # casefolded product name/slug -> slug, from the stored product documents
         self.contact_emails: dict[str, str] = {}
 
@@ -221,12 +222,16 @@ class ChatService:
                 "SELECT DISTINCT document_id, title FROM chunks "
                 "WHERE document_id ~ '^product-' AND document_id !~ '^product-support-draft'")
         names: dict[str, str] = {}
+        ar_names: dict[str, str] = {}
         for r in rows:
-            m = re.fullmatch(r"product-(.+)-(?:en|ar)", r["document_id"])
+            m = re.fullmatch(r"product-(.+)-(en|ar)", r["document_id"])
+            if m and m.group(2) == "ar":
+                ar_names[m.group(1)] = r["title"]
             if m:
                 names[r["title"].casefold()] = m.group(1)
                 names[m.group(1).replace("-", " ")] = m.group(1)
         self.product_names = names
+        self.ar_names = ar_names
 
     def _mentioned_products(self, message: str) -> list[str]:
         text = message.casefold().replace("-", " ")
@@ -317,7 +322,8 @@ class ChatService:
         if intent & Intent.PRODUCT_LIVE:
             cat = await catalogue.lookup(product_query, language, enabled=self.s.catalogue_enabled,
                                          base_url=self.s.catalogue_base_url or catalogue.API_BASE,
-                                         website=self.s.source_base_url or catalogue.STORE_BASE)
+                                         website=self.s.source_base_url or catalogue.STORE_BASE,
+                                         ar_names=self.ar_names)
 
         if name_only and (cat is None or cat.status is not catalogue.CatalogueStatus.OK or not cat.products):
             # Shop API unavailable (or no Arabic data): answer from the stored product text, never a sibling's.
