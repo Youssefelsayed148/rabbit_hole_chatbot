@@ -127,7 +127,11 @@ async def product_detail(slug: str, language: str, *, base_url: str = API_BASE, 
     return result
 
 
-async def lookup(query: str, language: str, *, enabled: bool, base_url: str = API_BASE, website: str = STORE_BASE) -> CatalogueResult:
+async def lookup(query: str, language: str, *, enabled: bool, base_url: str = API_BASE, website: str = STORE_BASE,
+                 ar_names: dict[str, str] | None = None) -> CatalogueResult:
+    """ar_names maps slug -> stored Arabic product name. The shop API has no Arabic product text, so Arabic lookups
+    take live price/stock/variants from the English record and leave the description empty: the pipeline supplies
+    the stored Arabic description. Without a stored Arabic name for a product the lookup fails, as before."""
     if not enabled:
         return CatalogueResult(CatalogueStatus.NOT_CONNECTED)
     try:
@@ -135,23 +139,32 @@ async def lookup(query: str, language: str, *, enabled: bool, base_url: str = AP
             listing = await list_products(base_url=base_url, website=website)
             # Prefer exact names/slugs; broad browsing returns up to six public designs.
             normalized = query.casefold().replace("-", " ")
-            selected = [p for p in listing if p.name.casefold() in normalized or p.slug.replace("-", " ") in normalized]
+            ar_names = (ar_names or {}) if language == "ar" else {}
+            selected = [p for p in listing if p.name.casefold() in normalized or p.slug.replace("-", " ") in normalized
+                        or (ar_names.get(p.slug) and ar_names[p.slug].casefold() in normalized)]
             if "\nProduct: " in query and not selected:
                 return CatalogueResult(CatalogueStatus.OK)
             selected = selected or listing[:6]
-            details = await asyncio.gather(*(product_detail(p.slug, language, base_url=base_url, website=website) for p in selected))
+            details = list(await asyncio.gather(*(product_detail(p.slug, language, base_url=base_url, website=website) for p in selected)))
+            names: dict[str, str] = {}
+            descriptions: dict[str, str] = {}
+            for i, (summary, detail) in enumerate(zip(selected, details, strict=True)):
+                if language == "ar" and not any("\u0600" <= c <= "\u06ff" for c in detail.description):
+                    if not ar_names.get(summary.slug):
+                        raise ValueError("Arabic catalogue content unavailable")
+                    details[i] = await product_detail(summary.slug, "en", base_url=base_url, website=website)
+                    names[summary.slug] = ar_names[summary.slug]
+                    descriptions[summary.slug] = ""
             products = []
             for summary, detail in zip(selected, details, strict=True):
                 if summary.id != detail.id or summary.currency != detail.currency:
                     raise ValueError("Inconsistent catalogue identity")
-                if language == "ar" and not any("\u0600" <= c <= "\u06ff" for c in detail.description):
-                    raise ValueError("Arabic catalogue content unavailable")
-                products.append({"id": detail.id, "name": detail.name, "slug": detail.slug,
+                products.append({"id": detail.id, "name": names.get(detail.slug, detail.name), "slug": detail.slug,
                     "url": website.rstrip("/") + "/collection", "image": summary.image,
                     # The storefront lists no price for designs that are not in stock, so neither do we.
                     "price": detail.price if summary.inStock else None, "currency": detail.currency,
                     "price_includes_vat": summary.inStock,
-                    "in_stock": summary.inStock, "description": detail.description,
+                    "in_stock": summary.inStock, "description": descriptions.get(detail.slug, detail.description),
                     "variants": [{"colorId": v.colorId, "size": v.size, "available": v.stock > 0} for v in detail.variants],
                     "colors": [c.model_dump() for c in detail.colors],
                     "specifications": [s.model_dump() for s in detail.specifications], "care": detail.productCare})

@@ -221,3 +221,39 @@ async def test_out_of_stock_products_have_no_price(monkeypatch):
     assert by_slug["danat-al-dunya"]["price"] == 1300 and by_slug["danat-al-dunya"]["price_includes_vat"] is True
     assert by_slug["harmony"]["price"] is None and by_slug["harmony"]["price_includes_vat"] is False
     assert "has price null" in catalogue.live_data_note(result)
+
+
+async def _arabic_less_api(monkeypatch, items):
+    calls = []
+    async def fetch(path, **kwargs):
+        calls.append(path)
+        if "?page=" in path:
+            return {"items": items, "page": 1, "totalPages": 1}
+        return {**detail("en"), **next(i for i in items if f"/{i['slug']}?" in path)}
+    monkeypatch.setattr(catalogue, "fetch_json", fetch)
+    return calls
+
+
+async def test_arabic_lookup_uses_live_facts_with_stored_arabic_names_when_api_has_no_arabic(monkeypatch):
+    items = [summary(), {**summary(), "id": "35", "slug": "harmony", "name": "Harmony", "inStock": False}]
+    calls = await _arabic_less_api(monkeypatch, items)
+    names = {"danat-al-dunya": "دانة الدنيا", "harmony": "هارموني"}
+    result = await catalogue.lookup("اعرض المنتجات", "ar", enabled=True, ar_names=names)
+    assert result.status is catalogue.CatalogueStatus.OK
+    by_slug = {p["slug"]: p for p in result.products}
+    assert by_slug["danat-al-dunya"]["name"] == "دانة الدنيا" and by_slug["danat-al-dunya"]["price"] == 1300
+    assert by_slug["harmony"]["price"] is None and by_slug["harmony"]["in_stock"] is False
+    assert all(p["description"] == "" for p in result.products)          # Arabic text comes from stored documents
+    assert any("locale=en" in c for c in calls)
+
+
+async def test_arabic_name_selects_only_that_product(monkeypatch):
+    items = [summary(), {**summary(), "id": "35", "slug": "harmony", "name": "Harmony"}]
+    await _arabic_less_api(monkeypatch, items)
+    result = await catalogue.lookup("هارموني", "ar", enabled=True, ar_names={"danat-al-dunya": "دانة الدنيا", "harmony": "هارموني"})
+    assert [p["slug"] for p in result.products] == ["harmony"]
+
+
+async def test_arabic_lookup_without_stored_arabic_names_still_refuses(monkeypatch):
+    await _arabic_less_api(monkeypatch, [summary()])
+    assert (await catalogue.lookup("اعرض المنتجات", "ar", enabled=True)).status is catalogue.CatalogueStatus.UNAVAILABLE

@@ -561,3 +561,20 @@ async def test_policy_question_without_product_name_is_untouched(svc, chat_model
     monkeypatch.setattr(catalogue, "lookup", boom)
     r = await svc.answer("When should I report a manufacturing defect?")
     assert r.intent == "knowledge"
+
+
+async def test_arabic_browse_lists_products_from_stored_arabic_documents(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    assert svc.ar_names["harmony"] == "هارموني"
+    seen = {}
+    async def live(query, language, **kwargs):
+        seen.update(kwargs)
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, _products("danat-al-dunya", "harmony", "rh-ww"))
+    monkeypatch.setattr(catalogue, "lookup", live)
+    await svc.answer("اعرض لي المنتجات")
+    assert seen["ar_names"] == svc.ar_names
+    turn = last_user_turn(chat_model)
+    for doc in ("product-danat-al-dunya-ar", "product-harmony-ar", "product-rh-ww-ar"):
+        assert f'id="{doc}-1"' in turn
