@@ -12,6 +12,7 @@ async def svc(pool, embedder, chat_model, settings):
     await run_ingest(pool, embedder, settings)
     service = ChatService(pool, embedder, chat_model, settings)
     await service.cache_contact_emails()
+    await service.cache_product_names()
     return service
 
 
@@ -433,3 +434,130 @@ async def test_size_followup_answers_from_live_variants_without_model_confusion(
     assert 'Wonders' in result.answer and 'No sizes are currently available' in result.answer
     assert not result.needs_human and result.sources[0]['document_id']=='catalogue-en'
     assert not [c for c in chat_model.calls if c['json_mode']]
+
+
+def _products(*slugs):
+    names = {"danat-al-dunya": "Danat Al Dunya", "harmony": "Harmony", "rh-ww": "RH WW"}
+    from app import catalogue
+    return [{"id": str(i), "slug": s, "name": names[s], "url": catalogue.STORE_BASE + "/collection",
+             "price": None, "currency": "AED", "in_stock": False, "description": "live text"} for i, s in enumerate(slugs)]
+
+
+async def _wrong_sibling_retrieval(svc, monkeypatch, wrong_doc):
+    """Reproduce the live bug: keyword retrieval returns another product's description instead of the asked one."""
+    from app.retrieval import fetch_documents
+    async def evidence(*args, **kwargs):
+        return await fetch_documents(svc.pool, [wrong_doc, "contact-en"], svc.s.allowed_statuses)
+    monkeypatch.setattr("app.pipeline.retrieve", evidence)
+
+
+async def test_single_product_gets_its_own_description_even_if_retrieval_returns_a_sibling(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    await _wrong_sibling_retrieval(svc, monkeypatch, "product-danat-al-dunya-en")
+    async def live(*args, **kwargs):
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, _products("rh-ww"))
+    monkeypatch.setattr(catalogue, "lookup", live)
+    await svc.answer("RH WW")
+    turn = last_user_turn(chat_model)
+    assert 'document="product-rh-ww-en"' in turn
+    assert "WonderWorld Elements is the soul of Rabbit Hole" in turn      # its own artwork story
+    assert "Eco-friendly recycled polyester" in turn and "Product care" in turn   # details and care
+    assert "product-danat-al-dunya-en" not in turn and "tribute to the city of Dubai" not in turn
+    assert 'document="contact-en"' in turn                                # non-product evidence is kept
+
+
+async def test_product_listing_gets_each_products_own_description_only(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    await _wrong_sibling_retrieval(svc, monkeypatch, "product-harmony-en")
+    async def live(*args, **kwargs):
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, _products("danat-al-dunya", "harmony", "rh-ww"))
+    monkeypatch.setattr(catalogue, "lookup", live)
+    await svc.answer("Show me your products")
+    turn = last_user_turn(chat_model)
+    for doc in ("product-danat-al-dunya-en", "product-harmony-en", "product-rh-ww-en"):
+        assert f'id="{doc}-1"' in turn and f'id="{doc}-2"' not in turn
+    assert turn.index("product-danat-al-dunya-en-1") < turn.index("product-harmony-en-1") < turn.index("product-rh-ww-en-1")
+
+
+async def test_arabic_product_uses_arabic_document_and_support_draft_is_not_a_product_doc(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    from app.pipeline import _PRODUCT_DOC
+    assert not _PRODUCT_DOC.match("product-support-draft-ar") and _PRODUCT_DOC.match("product-rh-ww-ar")
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    await _wrong_sibling_retrieval(svc, monkeypatch, "product-danat-al-dunya-ar")
+    async def live(*args, **kwargs):
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, _products("harmony"))
+    monkeypatch.setattr(catalogue, "lookup", live)
+    await svc.answer("حدثني عن هارموني")
+    turn = last_user_turn(chat_model)
+    assert 'document="product-harmony-ar"' in turn and 'document="product-danat-al-dunya-ar"' not in turn
+
+
+async def test_products_without_slug_leave_evidence_unchanged(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    async def live(*args, **kwargs):
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, [{"id": "1", "name": "X", "url": catalogue.STORE_BASE + "/collection"}])
+    monkeypatch.setattr(catalogue, "lookup", live)
+    await svc.answer("Show me your products")
+    assert "<evidence>" in last_user_turn(chat_model)
+
+
+async def test_product_names_are_cached_in_both_languages(svc):
+    assert svc.product_names["rh ww"] == "rh-ww" and svc.product_names["harmony"] == "harmony"
+    assert svc.product_names["دانة الدنيا"] == "danat-al-dunya" and svc.product_names["هارموني"] == "harmony"
+    assert "product support draft" not in svc.product_names
+
+
+async def test_bare_product_name_gets_live_data_and_its_own_text(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    seen = []
+    async def live(query, *args, **kwargs):
+        seen.append(query)
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, _products("harmony"))
+    monkeypatch.setattr(catalogue, "lookup", live)
+    result = await svc.answer("Harmony")
+    assert seen == ["Harmony"]                      # a bare name now triggers the live lookup
+    turn = last_user_turn(chat_model)
+    assert "live text" in turn and 'document="product-harmony-en"' in turn
+    assert result.products and result.products[0]["slug"] == "harmony"
+
+
+async def test_product_name_with_api_down_answers_from_its_own_stored_text(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    await _wrong_sibling_retrieval(svc, monkeypatch, "product-danat-al-dunya-en")
+    async def down(*args, **kwargs):
+        return catalogue.CatalogueResult(catalogue.CatalogueStatus.UNAVAILABLE)
+    monkeypatch.setattr(catalogue, "lookup", down)
+    result = await svc.answer("Tell me about RH WW")
+    assert "can't confirm product prices" not in result.answer       # not the price-unconfirmed reply
+    turn = last_user_turn(chat_model)
+    assert 'document="product-rh-ww-en"' in turn and "product-danat-al-dunya-en" not in turn
+
+
+async def test_product_name_with_catalogue_disabled_keeps_old_behaviour(svc, chat_model):
+    assert not svc.s.catalogue_enabled
+    result = await svc.answer("Tell me about Harmony")
+    assert "can't confirm product prices" not in result.answer
+    assert last_user_turn(chat_model)
+
+
+async def test_policy_question_without_product_name_is_untouched(svc, chat_model, monkeypatch):
+    from dataclasses import replace
+    from app import catalogue
+    svc.s = replace(svc.s, catalogue_enabled=True)
+    async def boom(*args, **kwargs):
+        raise AssertionError("no live lookup expected")
+    monkeypatch.setattr(catalogue, "lookup", boom)
+    r = await svc.answer("When should I report a manufacturing defect?")
+    assert r.intent == "knowledge"

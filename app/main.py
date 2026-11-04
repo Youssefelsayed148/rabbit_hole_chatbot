@@ -75,6 +75,7 @@ def create_app(
                 log.info("refreshing approved index (hash-diff ingest)")
                 await run_ingest(pool, emb, s)
             await service.cache_contact_emails()
+            await service.cache_product_names()
             await service.purge_old_messages()
             yield
         finally:
@@ -141,7 +142,9 @@ def create_app(
     @app.post("/admin/ingest")
     async def admin_ingest(request: Request):
         check_admin(request, s)
-        return await run_ingest(request.app.state.pool, request.app.state.embedder, s)
+        result = await run_ingest(request.app.state.pool, request.app.state.embedder, s)
+        await request.app.state.service.cache_product_names()
+        return result
 
     @app.post("/admin/purge")
     async def admin_purge(request: Request):
