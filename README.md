@@ -74,8 +74,9 @@ Retrieved evidence, language rules and citation validation apply to every model.
 
 Optional paid overflow: free providers can return 429 even under quota. To let only the
 overflow spill to a paid model, set `CHAT_FREE_ONLY=false`, append the paid ID to
-`CHAT_FALLBACK_MODELS` (e.g. `openai/gpt-5-nano`) and set `CHAT_REASONING_EFFORT=minimal`
-so a reasoning model does not spend the 700-token budget thinking. The free primary is still
+`CHAT_FALLBACK_MODELS` (e.g. `openai/gpt-4o-mini`, a non-reasoning model). If you use a reasoning
+model such as `openai/gpt-5-nano`, also set `CHAT_REASONING_EFFORT=minimal` so it does not spend the
+700-token budget thinking. The free primary is still
 tried first; OpenRouter bills only requests a paid model actually serves (see the
 `served=` log line). Free-only mode, with its zero price ceiling, remains the default.
 Embeddings continue to use the existing OpenAI key/index and are billed separately.
