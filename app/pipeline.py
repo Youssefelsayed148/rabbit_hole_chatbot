@@ -83,6 +83,10 @@ _BULLET = re.compile(r"^[ \t]*[-*\u2022][ \t]+", re.M)
 _LABEL_ONLY = re.compile(r"^[ \t]*(?:[-*\u2022][ \t]+)?(?:Image|Photo|More Info|Link|الصورة|مزيد من المعلومات)[ \t]*:?[ \t]*$", re.I | re.M)
 
 
+# Per-product catalogue documents are product-<slug>-<lang>; the support draft is a separate policy-style document.
+_PRODUCT_DOC = re.compile(r"^product-(?!support-draft)[a-z0-9]+(?:-[a-z0-9]+)*-(?:en|ar)$")
+
+
 def tidy_answer(answer: str, cards_shown: bool) -> str:
     """Keep chat bubbles readable: drop markdown images, flatten headings/nested bullets, and never
     repeat product links that the product cards already provide."""
@@ -116,6 +120,7 @@ def _public_url(url: str, base: str) -> str:
 class ChatService:
     def __init__(self, pool: asyncpg.Pool, embedder: Embedder, llm: ChatModel, settings: Settings):
         self.pool, self.embedder, self.llm, self.s = pool, embedder, llm, settings
+        self.product_names: dict[str, str] = {}  # casefolded product name/slug -> slug, from the stored product documents
         self.contact_emails: dict[str, str] = {}
 
     # ---- conversation storage -------------------------------------------------
@@ -174,6 +179,26 @@ class ChatService:
         return int(res.split()[-1])
 
     # ---- helpers ----------------------------------------------------------------
+    async def _focus_product_chunks(self, chunks: list, products: list[dict], language: str) -> list:
+        """Give the model exactly the shown products' own documents, never a sibling product's near-identical text.
+
+        Keyword retrieval can rank another product's description above the one asked about; the model then answers
+        with the wrong product's description and artwork. When the live catalogue resolved the products, their stored
+        documents replace whatever product documents retrieval returned. One product gets its full document
+        (description/artwork, details, care); several products get each one's description only.
+        """
+        wanted = [f"product-{p['slug']}-{language}" for p in products if isinstance(p.get("slug"), str) and p["slug"]]
+        if not wanted:
+            return chunks
+        own = await fetch_documents(self.pool, wanted, self.s.allowed_statuses)
+        if len(wanted) > 1:
+            first: dict[str, object] = {}
+            for c in own:
+                first.setdefault(c.document_id, c)
+            own = list(first.values())
+        own.sort(key=lambda c: wanted.index(c.document_id))
+        return own + [c for c in chunks if not _PRODUCT_DOC.match(c.document_id)]
+
     async def _condense(self, message: str, history: list[dict]) -> str:
         if not history:
             return message
@@ -188,6 +213,28 @@ class ChatService:
         except Exception:
             log.exception("condense failed; using raw message")
             return message
+
+    async def cache_product_names(self) -> None:
+        """Remember product names (EN/AR) from the stored product documents, so a bare name counts as a product question."""
+        async with self.pool.acquire() as conn:
+            rows = await conn.fetch(
+                "SELECT DISTINCT document_id, title FROM chunks "
+                "WHERE document_id ~ '^product-' AND document_id !~ '^product-support-draft'")
+        names: dict[str, str] = {}
+        for r in rows:
+            m = re.fullmatch(r"product-(.+)-(?:en|ar)", r["document_id"])
+            if m:
+                names[r["title"].casefold()] = m.group(1)
+                names[m.group(1).replace("-", " ")] = m.group(1)
+        self.product_names = names
+
+    def _mentioned_products(self, message: str) -> list[str]:
+        text = message.casefold().replace("-", " ")
+        found: list[str] = []
+        for name, slug in self.product_names.items():
+            if slug not in found and re.search(r"(?<!\w)" + re.escape(name) + r"(?!\w)", text):
+                found.append(slug)
+        return found
 
     async def cache_contact_emails(self) -> None:
         emails = {}
@@ -230,6 +277,13 @@ class ChatService:
             await self._save(cid, message, reply)
             return ChatResult(reply, cid, language, intent.label)
 
+        # A bare product name ("Harmony", "Tell me about RH WW") has no price/stock/size words, so the router sends
+        # it down the knowledge path with no live data. Treat it as a product question when the shop API is on.
+        mentioned = self._mentioned_products(message)
+        name_only = bool(mentioned) and self.s.catalogue_enabled and not intent & (Intent.PRODUCT_LIVE | Intent.ORDER_ACCOUNT)
+        if name_only:
+            intent |= Intent.PRODUCT_LIVE  # keep KNOWLEDGE: policy questions about a product still need cited evidence
+
         if intent & Intent.PRODUCT_LIVE and not self.s.catalogue_enabled:
             reply = CATALOGUE_UNCONFIRMED[language].format(email=self._email_suffix(language))
             await self._save(cid, message, reply)
@@ -265,10 +319,18 @@ class ChatService:
                                          base_url=self.s.catalogue_base_url or catalogue.API_BASE,
                                          website=self.s.source_base_url or catalogue.STORE_BASE)
 
+        if name_only and (cat is None or cat.status is not catalogue.CatalogueStatus.OK or not cat.products):
+            # Shop API unavailable (or no Arabic data): answer from the stored product text, never a sibling's.
+            intent, cat = Intent.KNOWLEDGE, None
+            chunks = await self._focus_product_chunks(chunks, [{"slug": s} for s in mentioned], language)
+
         if intent & Intent.PRODUCT_LIVE and (cat is None or cat.status is not catalogue.CatalogueStatus.OK or not cat.products):
             reply = CATALOGUE_UNCONFIRMED[language].format(email=self._email_suffix(language))
             await self._save(cid, message, reply)
             return ChatResult(reply, cid, language, intent.label, needs_human=bool(intent & Intent.ORDER_ACCOUNT))
+
+        if cat and cat.status is catalogue.CatalogueStatus.OK and cat.products:
+            chunks = await self._focus_product_chunks(chunks, cat.products, language)
 
         if intent == Intent.PRODUCT_LIVE and cat and cat.products:
             size_answer = catalogue.available_sizes_answer(message, cat.products, language)
