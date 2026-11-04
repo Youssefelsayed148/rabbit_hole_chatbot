@@ -8,7 +8,7 @@ from app import catalogue
 
 
 def summary():
-    return {"id": "41", "slug": "dubai-above-mars", "name": "Dubai Above Mars",
+    return {"id": "41", "slug": "danat-al-dunya", "name": "Danat Al Dunya",
             "price": 1300, "priceAfterVat": 1365, "currency": "AED", "image": "https://example.com/product.png", "inStock": True}
 
 
@@ -47,9 +47,9 @@ async def test_disabled_catalogue_never_calls_network(monkeypatch):
 @pytest.mark.parametrize("vat_field", ["original", "missing", "changed"])
 async def test_customer_prices_never_include_added_vat(monkeypatch, vat_field):
     items = [summary(),
-             {**summary(), "id": "35", "slug": "wonders-of-the-world", "name": "Wonders of the World",
+             {**summary(), "id": "35", "slug": "harmony", "name": "Harmony",
               "price": 200, "priceAfterVat": 210},
-             {**summary(), "id": "29", "slug": "glitched", "name": "Glitched",
+             {**summary(), "id": "29", "slug": "rh-ww", "name": "RH WW",
               "price": 200, "priceAfterVat": 210}]
     for item in items:
         if vat_field == "missing":
@@ -103,11 +103,11 @@ async def test_named_product_limits_detail_requests(monkeypatch):
     async def fetch(path, **kwargs):
         calls.append(path)
         if "?page=" in path:
-            other = {**summary(), "id": "29", "slug": "glitched", "name": "Glitched"}
+            other = {**summary(), "id": "29", "slug": "rh-ww", "name": "RH WW"}
             return {"items": [summary(), other], "page": 1, "totalPages": 1}
         return detail()
     monkeypatch.setattr(catalogue, "fetch_json", fetch)
-    result = await catalogue.lookup("Price of Dubai Above Mars", "en", enabled=True)
+    result = await catalogue.lookup("Price of Danat Al Dunya", "en", enabled=True)
     assert len(result.products) == 1 and len(calls) == 2
 
 
@@ -128,14 +128,14 @@ def test_product_snapshot_contains_descriptions_only():
 async def test_named_arabic_product_filters_localized_cards(monkeypatch):
     async def fetch(path, **kwargs):
         if "?page=" in path:
-            return {"items": [summary(), {**summary(), "id": "29", "slug": "glitched", "name": "Glitched"}], "page": 1, "totalPages": 1}
-        if "/glitched?" in path:
-            return {**detail("ar"), "id": "29", "slug": "glitched", "name": "خلل"}
-        return {**detail("ar"), "name": "دبي فوق المريخ"}
+            return {"items": [summary(), {**summary(), "id": "29", "slug": "rh-ww", "name": "RH WW"}], "page": 1, "totalPages": 1}
+        if "/rh-ww?" in path:
+            return {**detail("ar"), "id": "29", "slug": "rh-ww", "name": "آر إتش دبليو دبليو"}
+        return {**detail("ar"), "name": "دانة الدنيا"}
     monkeypatch.setattr(catalogue, "fetch_json", fetch)
-    result = await catalogue.lookup("كم سعر دبي فوق المريخ؟", "ar", enabled=True)
+    result = await catalogue.lookup("كم سعر دانة الدنيا؟", "ar", enabled=True)
     assert result.status is catalogue.CatalogueStatus.OK
-    assert [p["slug"] for p in result.products] == ["dubai-above-mars"]
+    assert [p["slug"] for p in result.products] == ["danat-al-dunya"]
 
 
 @pytest.mark.parametrize('question,index', [
@@ -144,7 +144,7 @@ async def test_named_arabic_product_filters_localized_cards(monkeypatch):
     ('مقاسات المنتج الثاني', 1), ('مقاسات المنتج ٢', 1), ('ألوان المنتج الأخير', 2),
 ])
 def test_product_references_use_saved_card_order(question, index):
-    refs = [{'slug': 'dubai', 'name': 'Dubai'}, {'slug': 'wonders', 'name': 'Wonders'}, {'slug': 'glitched', 'name': 'Glitched'}]
+    refs = [{'slug': 'dubai', 'name': 'Dubai'}, {'slug': 'wonders', 'name': 'Wonders'}, {'slug': 'rh-ww', 'name': 'RH WW'}]
     resolved, ambiguous = catalogue.resolve_reference(question, [refs])
     assert not ambiguous and resolved.endswith('Product: ' + refs[index]['slug'])
 
@@ -159,7 +159,7 @@ def test_single_product_focus_and_explicit_name_priority():
     refs = [{'slug': 'dubai', 'name': 'Dubai'}]
     assert catalogue.resolve_reference('What sizes are available?', [refs])[0].endswith('Product: dubai')
     assert catalogue.resolve_reference('Is it available?', [refs])[0].endswith('Product: dubai')
-    assert catalogue.resolve_reference('What sizes does Glitched have?', [refs]) == ('What sizes does Glitched have?', False)
+    assert catalogue.resolve_reference('What sizes does RH WW have?', [refs]) == ('What sizes does RH WW have?', False)
     assert catalogue.resolve_reference('Is Dubai available?', [refs]) == ('Is Dubai available?', False)
     assert catalogue.resolve_reference('sizes for the second product', [])[1]
 
@@ -182,7 +182,7 @@ async def test_inventory_counts_never_reach_model_or_browser(monkeypatch, quanti
         value['variants'][0]['stock'] = quantity
         return value
     monkeypatch.setattr(catalogue, 'fetch_json', fetch)
-    result = await catalogue.lookup('Dubai Above Mars sizes', 'en', enabled=True)
+    result = await catalogue.lookup('Danat Al Dunya sizes', 'en', enabled=True)
     assert result.status is catalogue.CatalogueStatus.OK
     assert result.products[0]['variants'] == [{'colorId': 'white', 'size': 'M', 'available': available}]
     assert '"stock":' not in json.dumps(result.products)
@@ -208,7 +208,7 @@ def test_size_advice_and_incomplete_variants_are_not_treated_as_availability():
 
 
 async def test_out_of_stock_products_have_no_price(monkeypatch):
-    items = [summary(), {**summary(), "id": "35", "slug": "wonders-of-the-world", "name": "Wonders of the World", "inStock": False}]
+    items = [summary(), {**summary(), "id": "35", "slug": "harmony", "name": "Harmony", "inStock": False}]
 
     async def fetch(path, **kwargs):
         if "?page=" in path:
@@ -218,6 +218,6 @@ async def test_out_of_stock_products_have_no_price(monkeypatch):
     monkeypatch.setattr(catalogue, "fetch_json", fetch)
     result = await catalogue.lookup("Show products and prices", "en", enabled=True)
     by_slug = {p["slug"]: p for p in result.products}
-    assert by_slug["dubai-above-mars"]["price"] == 1300 and by_slug["dubai-above-mars"]["price_includes_vat"] is True
-    assert by_slug["wonders-of-the-world"]["price"] is None and by_slug["wonders-of-the-world"]["price_includes_vat"] is False
+    assert by_slug["danat-al-dunya"]["price"] == 1300 and by_slug["danat-al-dunya"]["price_includes_vat"] is True
+    assert by_slug["harmony"]["price"] is None and by_slug["harmony"]["price_includes_vat"] is False
     assert "has price null" in catalogue.live_data_note(result)
