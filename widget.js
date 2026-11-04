@@ -272,13 +272,19 @@
   const scrollEnd = () => requestAnimationFrame(() => log.scrollTo({ top: log.scrollHeight, behavior: reduceMotion.matches ? 'auto' : 'smooth' }));
   // A small, text-only formatter: paragraphs, lists and bold; never interpret HTML.
   const inline = text => {
-    const parts = text.split(/(\*\*[^*\n]+\*\*)/g);
-    return parts.flatMap(part => part.startsWith('**') && part.endsWith('**')
-      ? [h('strong', {}, linkify(part.slice(2, -2)))] : linkify(part));
+    const parts = text.split(/(\*\*[^*\n]+\*\*|\[[^\]\n]+\]\(https?:\/\/[^)\s]+\))/g);
+    return parts.flatMap(part => {
+      if (part.startsWith('**') && part.endsWith('**') && part.length > 4) return [h('strong', {}, linkify(part.slice(2, -2)))];
+      const link = part.match(/^\[([^\]\n]+)\]\((https?:\/\/[^)\s]+)\)$/);
+      const href = link && safeUrl(link[2]);
+      return href ? [h('a', { href, target: '_blank', rel: 'noopener noreferrer' }, link[1])] : linkify(part);
+    });
   };
   const answerBody = text => {
     const nodes = []; let list = null;
-    for (const line of text.split(/\r?\n/)) {
+    for (const rawLine of text.replace(/!\[[^\]]*\]\([^)]*\)/g, '').split(/\r?\n/)) {
+      const heading = rawLine.match(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/);
+      const line = heading ? '**' + heading[1].replace(/\*\*/g, '') + '**' : rawLine;
       const item = line.match(/^\s*(?:([-*•])|\d+[.)])\s+(.+)$/);
       if (item) {
         const tag = item[1] ? 'ul' : 'ol';

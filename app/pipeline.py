@@ -75,6 +75,29 @@ class ChatResult:
     degraded: bool = False
 
 
+_MD_IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+_MD_LINK = re.compile(r"\[([^\]\n]+)\]\((https?://[^)\s]+)\)")
+_MD_HEADING = re.compile(r"^[ \t]{0,3}#{1,6}[ \t]+(.+?)[ \t#]*$", re.M)
+_LINK_LINE = re.compile(r"^[ \t]*(?:[-*\u2022][ \t]+)?[^\n:\[\]]{0,40}:[ \t]*\[[^\]\n]+\]\(https?://[^)\s]+\)[ \t.]*$", re.M)
+_BULLET = re.compile(r"^[ \t]*[-*\u2022][ \t]+", re.M)
+_LABEL_ONLY = re.compile(r"^[ \t]*(?:[-*\u2022][ \t]+)?(?:Image|Photo|More Info|Link|الصورة|مزيد من المعلومات)[ \t]*:?[ \t]*$", re.I | re.M)
+
+
+def tidy_answer(answer: str, cards_shown: bool) -> str:
+    """Keep chat bubbles readable: drop markdown images, flatten headings/nested bullets, and never
+    repeat product links that the product cards already provide."""
+    text = _MD_IMAGE.sub("", answer)
+    if cards_shown:
+        text = _LINK_LINE.sub("", text)
+    text = _MD_LINK.sub(lambda m: m.group(1) if cards_shown else f"{m.group(1)} ({m.group(2)})", text)
+    text = _LABEL_ONLY.sub("", text)
+    text = _MD_HEADING.sub(r"**\1**", text)
+    text = _BULLET.sub("- ", text)
+    text = re.sub(r"[ \t]+$", "", text, flags=re.M)
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    return text or answer.strip()
+
+
 def parse_model_json(raw: str) -> dict | None:
     try:
         return ModelReply.model_validate_json(raw, strict=True).model_dump()
@@ -289,7 +312,7 @@ class ChatService:
         if cat and cat.status is catalogue.CatalogueStatus.OK and cat.products:
             sources.append({"title": "Product collection" if language == "en" else "تشكيلة المنتجات",
                             "url": cat.products[0]["url"], "document_id": "catalogue-" + language})
-        answer = parsed["answer"].strip()
+        answer = tidy_answer(parsed["answer"], bool(cat and cat.status is catalogue.CatalogueStatus.OK and cat.products))
         await self._save(cid, message, answer, products=cat.products if cat else None)
         log.info("chat intent=%s lang=%s retrieved=%s cited=%s can_answer=%s ms=%d",
                  intent.label, language, [c.chunk_id for c in chunks], [c.chunk_id for c in cited],
