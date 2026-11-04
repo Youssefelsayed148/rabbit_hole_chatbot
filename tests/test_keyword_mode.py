@@ -65,7 +65,7 @@ async def test_keyword_no_match_returns_only_contact(pool, keyword_settings):
 
 
 @pytest.mark.parametrize('query,lang,expected', [
-    ('What fabric is Dubai Above Mars made of?', 'en', 'product-dubai-above-mars-en'),
+    ('What fabric is Danat Al Dunya made of?', 'en', 'product-danat-al-dunya-en'),
     ('What is your refund policy?', 'en', 'refund-en'),
     ('مَا هِي سِيَاسَة الاسْتِرْجَاع؟', 'ar', 'refund-ar'),
     ('What about personal data deletion?', 'en', 'privacy-en'),

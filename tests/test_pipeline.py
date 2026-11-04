@@ -350,7 +350,7 @@ async def test_live_products_are_returned_with_catalogue_citation(svc, chat_mode
     from dataclasses import replace
     from app import catalogue
     svc.s = replace(svc.s, catalogue_enabled=True)
-    products = [{"id": "41", "name": "Dubai Above Mars", "url": catalogue.STORE_BASE + "/collection", "price": 1365}]
+    products = [{"id": "41", "name": "Danat Al Dunya", "url": catalogue.STORE_BASE + "/collection", "price": 1365}]
     async def live(*args, **kwargs):
         return catalogue.CatalogueResult(catalogue.CatalogueStatus.OK, products)
     monkeypatch.setattr(catalogue, "lookup", live)
@@ -363,16 +363,16 @@ async def test_live_products_are_returned_with_catalogue_citation(svc, chat_mode
 
 
 @pytest.mark.parametrize('followup,slug', [
-    ('What sizes are available for the second product?', 'wonders-of-the-world'),
-    ('ما المقاسات المتاحة للمنتج الثاني؟', 'wonders-of-the-world'),
-    ('What about the third product?', 'glitched'),
+    ('What sizes are available for the second product?', 'harmony'),
+    ('ما المقاسات المتاحة للمنتج الثاني؟', 'harmony'),
+    ('What about the third product?', 'rh-ww'),
 ])
 async def test_product_followup_uses_saved_order_and_fresh_lookup(svc, chat_model, monkeypatch, pool, followup, slug):
     from dataclasses import replace
     from app import catalogue
     svc.s = replace(svc.s, catalogue_enabled=True)
     products = [{'slug': slug, 'name': name, 'url': catalogue.STORE_BASE + '/collection', 'price': 99, 'variants': [{'size': 'M', 'available': True}]} for slug, name in
-                [('dubai-above-mars', 'Dubai Above Mars'), ('wonders-of-the-world', 'Wonders of the World'), ('glitched', 'Glitched')]]
+                [('danat-al-dunya', 'Danat Al Dunya'), ('harmony', 'Harmony'), ('rh-ww', 'RH WW')]]
     calls = []
     async def live(query, language, **kwargs):
         calls.append(query)
@@ -400,7 +400,7 @@ async def test_product_followup_uses_saved_order_and_fresh_lookup(svc, chat_mode
 async def test_product_reference_context_is_isolated_and_expires(svc, pool):
     first = await svc._resolve_conversation(None)
     second = await svc._resolve_conversation(None)
-    await svc._save(first, 'browse', 'products', products=[{'slug': 'glitched', 'name': 'Glitched', 'price': 100}])
+    await svc._save(first, 'browse', 'products', products=[{'slug': 'rh-ww', 'name': 'RH WW', 'price': 100}])
     assert await svc._product_context(second) == []
     await pool.execute("UPDATE messages SET created_at=now()-interval '40 days' WHERE conversation_id=$1", first)
     assert await svc._product_context(first) == []

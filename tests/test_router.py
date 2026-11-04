@@ -85,6 +85,6 @@ def test_product_browsing_uses_live_catalogue(message):
     assert route(message) & Intent.PRODUCT_LIVE
 
 
-@pytest.mark.parametrize("message", ["Tell me about your collection story.", "What is Dubai Above Mars made of?", "Can I exchange a defective product?"])
+@pytest.mark.parametrize("message", ["Tell me about your collection story.", "What is Danat Al Dunya made of?", "Can I exchange a defective product?"])
 def test_static_product_and_collection_facts_use_knowledge(message):
     assert route(message) == Intent.KNOWLEDGE
