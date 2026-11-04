@@ -43,6 +43,8 @@ class Settings:
     chat_json_mode: bool = True   # set false if the chat model rejects response_format
     chat_free_only: bool = False  # OpenRouter: reject paid models and cap provider prices at zero
     chat_fallback_models: list[str] = field(default_factory=list)
+    # Optional last resort: if the chat endpoint above fails, retry once on OpenAI directly (OPENAI_API_KEY) with this model.
+    chat_paid_fallback_model: str = ""
     chat_reasoning_effort: str = ""  # OpenRouter reasoning effort (minimal/low/medium/high) when not free-only; empty = provider default
 
     data_dir: Path = Path(__file__).resolve().parent.parent / "data"
@@ -119,6 +121,7 @@ class Settings:
             chat_json_mode=_bool("CHAT_JSON_MODE", True),
             chat_free_only=_bool("CHAT_FREE_ONLY", False),
             chat_fallback_models=_list("CHAT_FALLBACK_MODELS"),
+            chat_paid_fallback_model=e.get("CHAT_PAID_FALLBACK_MODEL", "").strip(),
             chat_reasoning_effort=e.get("CHAT_REASONING_EFFORT", "").strip().lower(),
             data_dir=Path(e.get("DATA_DIR", str(d.data_dir))),
             include_unreviewed=_bool("INCLUDE_UNREVIEWED", False),

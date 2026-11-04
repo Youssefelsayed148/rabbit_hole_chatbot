@@ -72,13 +72,15 @@ to reserve the output budget for the answer. Free providers still have shared ca
 when all attempts fail, visitors receive the safe support/busy response.
 Retrieved evidence, language rules and citation validation apply to every model.
 
-Optional paid overflow: free providers can return 429 even under quota. To let only the
-overflow spill to a paid model, set `CHAT_FREE_ONLY=false`, append the paid ID to
-`CHAT_FALLBACK_MODELS` (e.g. `openai/gpt-4o-mini`, a non-reasoning model). If you use a reasoning
-model such as `openai/gpt-5-nano`, also set `CHAT_REASONING_EFFORT=minimal` so it does not spend the
-700-token budget thinking. The free primary is still
-tried first; OpenRouter bills only requests a paid model actually serves (see the
-`served=` log line). Free-only mode, with its zero price ceiling, remains the default.
+Optional paid last resort: free providers can return 429 even under quota. Set
+`CHAT_PAID_FALLBACK_MODEL=gpt-4o-mini` and `OPENAI_API_KEY`; when the OpenRouter chain fails
+(rate limit, outage, timeout, auth), the bot retries once directly on OpenAI with that model and your
+OpenAI credit. Free models still go first and free-only mode stays on, so most chats cost nothing. A bad
+request (400/422) is not retried, and if the paid call also fails visitors get the usual busy/support
+text. It is off unless the variable is set; it needs `CHAT_BASE_URL` (a separate primary endpoint). Logs
+show `via=openai-direct` when it served a reply. As an alternative you can put a paid OpenRouter ID in
+`CHAT_FALLBACK_MODELS` with `CHAT_FREE_ONLY=false` (billed to OpenRouter; add `CHAT_REASONING_EFFORT=minimal`
+for reasoning models).
 Embeddings continue to use the existing OpenAI key/index and are billed separately.
 Apply `.env` changes with the `api-real` command above; use the demo on port 8001.
 

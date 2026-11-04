@@ -6,7 +6,7 @@ import logging
 from typing import Protocol
 from urllib.parse import urlsplit
 
-from openai import AsyncOpenAI
+from openai import APIError, AsyncOpenAI, BadRequestError, UnprocessableEntityError
 
 from .config import Settings
 
@@ -83,8 +83,36 @@ class OpenAIChat:
         if s.chat_reasoning_effort and s.chat_reasoning_effort not in {"minimal", "low", "medium", "high"}:
             raise ValueError("CHAT_REASONING_EFFORT must be one of minimal, low, medium, high (or empty)")
         self.client = _client(s, chat=True)
+        self.paid_client = None
+        if s.chat_paid_fallback_model:
+            if not s.chat_base_url:
+                raise ValueError("CHAT_PAID_FALLBACK_MODEL needs a separate primary chat endpoint (CHAT_BASE_URL)")
+            if not s.openai_api_key:
+                raise RuntimeError("CHAT_PAID_FALLBACK_MODEL needs OPENAI_API_KEY (used directly against OpenAI)")
+            self.paid_client = _client(s)  # OpenAI key and base URL, never the chat endpoint's key
 
     async def complete(self, messages: list[dict], *, json_mode: bool = False, max_tokens: int = 700) -> str:
+        try:
+            return await self._complete_primary(messages, json_mode=json_mode, max_tokens=max_tokens)
+        except (BadRequestError, UnprocessableEntityError):
+            raise  # the request itself is wrong; another model would reject it too
+        except APIError as exc:
+            if self.paid_client is None:
+                raise
+            log.warning("primary chat failed (%s); retrying on OpenAI model %s", type(exc).__name__, self.s.chat_paid_fallback_model)
+            return await self._complete_paid(messages, json_mode=json_mode, max_tokens=max_tokens)
+
+    async def _complete_paid(self, messages: list[dict], *, json_mode: bool, max_tokens: int) -> str:
+        kwargs: dict = {"model": self.s.chat_paid_fallback_model, "messages": messages, "max_completion_tokens": max_tokens}
+        if self.s.temperature is not None:
+            kwargs["temperature"] = self.s.temperature
+        if json_mode and self.s.chat_json_mode:
+            kwargs["response_format"] = {"type": "json_object"}
+        resp = await self.paid_client.chat.completions.create(**kwargs)
+        log.info("chat completion requested=%s served=%s via=openai-direct", kwargs["model"], resp.model)
+        return resp.choices[0].message.content or ""
+
+    async def _complete_primary(self, messages: list[dict], *, json_mode: bool = False, max_tokens: int = 700) -> str:
         kwargs: dict = {
             "model": self.s.chat_model,
             "messages": messages,
