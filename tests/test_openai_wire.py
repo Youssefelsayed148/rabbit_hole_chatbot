@@ -164,3 +164,76 @@ async def test_default_chat_does_not_send_openrouter_parameters(server, variant)
     finally:
         await client.client.close()
     assert "models" not in SEEN[0]["body"] and "provider" not in SEEN[0]["body"]
+
+
+class _FakeCompletions:
+    def __init__(self, result):
+        self.result, self.calls = result, []
+
+    async def create(self, **kwargs):
+        self.calls.append(kwargs)
+        if isinstance(self.result, Exception):
+            raise self.result
+        return self.result
+
+
+class _FakeClient:
+    def __init__(self, result):
+        self.chat = type("C", (), {"completions": _FakeCompletions(result)})()
+
+
+def _resp(content="paid-ok"):
+    from types import SimpleNamespace as N
+    return N(model="gpt-4o-mini", choices=[N(message=N(content=content))])
+
+
+def _status_error(cls, code):
+    import httpx
+    req = httpx.Request("POST", "https://openrouter.ai/api/v1/chat/completions")
+    return cls("boom", response=httpx.Response(code, request=req), body=None)
+
+
+def _paid_chat(variant, primary_result, paid_result):
+    s = variant(chat_base_url="https://openrouter.ai/api/v1", chat_api_key="sk-or", openai_api_key="sk-oa",
+                chat_model="google/gemma-4-31b-it:free", chat_paid_fallback_model="gpt-4o-mini")
+    c = OpenAIChat(s)
+    c.client, c.paid_client = _FakeClient(primary_result), _FakeClient(paid_result)
+    return c
+
+
+async def test_paid_fallback_used_on_rate_limit_via_openai_direct(variant):
+    import openai
+    c = _paid_chat(variant, _status_error(openai.RateLimitError, 429), _resp())
+    out = await c.complete([{"role": "user", "content": "hi"}], json_mode=True, max_tokens=700)
+    assert out == "paid-ok"
+    call = c.paid_client.chat.completions.calls[0]
+    assert call["model"] == "gpt-4o-mini" and call["max_completion_tokens"] == 700
+    assert call["response_format"] == {"type": "json_object"} and "extra_body" not in call
+
+
+async def test_paid_fallback_not_used_when_primary_succeeds(variant):
+    c = _paid_chat(variant, _resp("free-ok"), _resp())
+    assert await c.complete([{"role": "user", "content": "hi"}]) == "free-ok"
+    assert c.paid_client.chat.completions.calls == []
+
+
+async def test_paid_fallback_skipped_for_bad_request(variant):
+    import openai
+    c = _paid_chat(variant, _status_error(openai.BadRequestError, 400), _resp())
+    with pytest.raises(openai.BadRequestError):
+        await c.complete([{"role": "user", "content": "hi"}])
+    assert c.paid_client.chat.completions.calls == []
+
+
+async def test_paid_failure_propagates_rate_limit_for_busy_message(variant):
+    import openai
+    c = _paid_chat(variant, _status_error(openai.RateLimitError, 429), _status_error(openai.RateLimitError, 429))
+    with pytest.raises(openai.RateLimitError):
+        await c.complete([{"role": "user", "content": "hi"}])
+
+
+def test_paid_fallback_requires_separate_chat_endpoint_and_openai_key(variant):
+    with pytest.raises(ValueError, match="CHAT_BASE_URL"):
+        OpenAIChat(variant(openai_api_key="sk-oa", chat_paid_fallback_model="gpt-4o-mini"))
+    with pytest.raises(RuntimeError, match="OPENAI_API_KEY"):
+        OpenAIChat(variant(chat_base_url="https://openrouter.ai/api/v1", chat_api_key="k", openai_api_key="", chat_paid_fallback_model="gpt-4o-mini"))
