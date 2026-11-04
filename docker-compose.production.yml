@@ -1,7 +1,9 @@
 ﻿# Standalone production stack. Use --env-file .env.production; no dev fallbacks.
+# Public URL: https://rabbitholechat.theosirislabs.com (Dokploy's Traefik on dokploy-network).
 services:
   db:
     image: pgvector/pgvector:pg16
+    container_name: rabbithole_chatbot_db
     environment:
       POSTGRES_USER: rh
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
@@ -15,6 +17,7 @@ services:
     restart: unless-stopped
   api:
     build: {context: ., target: service}
+    container_name: rabbithole_chatbot_api
     env_file: .env.production
     environment:
       ENV: production
@@ -28,10 +31,26 @@ services:
       AUTO_INGEST: 'true'
     depends_on:
       db: {condition: service_healthy}
+    # Local/debug only; production traffic reaches the container via Traefik on dokploy-network.
     ports: ['127.0.0.1:8000:8000']
     restart: unless-stopped
     user: rag
     init: true
     security_opt: ['no-new-privileges:true']
+    networks:
+      - default
+      - dokploy-network
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=dokploy-network
+      - traefik.http.routers.rabbitholechat.rule=Host(`rabbitholechat.theosirislabs.com`)
+      - traefik.http.routers.rabbitholechat.entrypoints=websecure
+      - traefik.http.routers.rabbitholechat.tls=true
+      - traefik.http.routers.rabbitholechat.tls.certresolver=letsencrypt
+      - traefik.http.services.rabbitholechat.loadbalancer.server.port=8000
 volumes:
   production-pgdata:
+networks:
+  default:
+  dokploy-network:
+    external: true
