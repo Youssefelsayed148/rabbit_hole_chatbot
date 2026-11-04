@@ -80,6 +80,8 @@ class OpenAIChat:
         if s.chat_free_only:
             if any(m != "openrouter/free" and not m.endswith(":free") for m in self.models):
                 raise ValueError("CHAT_FREE_ONLY requires free model IDs (:free or openrouter/free)")
+        if s.chat_reasoning_effort and s.chat_reasoning_effort not in {"minimal", "low", "medium", "high"}:
+            raise ValueError("CHAT_REASONING_EFFORT must be one of minimal, low, medium, high (or empty)")
         self.client = _client(s, chat=True)
 
     async def complete(self, messages: list[dict], *, json_mode: bool = False, max_tokens: int = 700) -> str:
@@ -100,6 +102,9 @@ class OpenAIChat:
             extra["provider"] = {"max_price": {"prompt": 0, "completion": 0, "request": 0}}
             # Short evidence-grounded replies should reserve their token budget for the answer.
             extra["reasoning"] = {"enabled": False}
+        elif self.s.chat_reasoning_effort:
+            # Paid reasoning fallbacks (e.g. gpt-5-nano) can spend the whole token budget thinking; cap it.
+            extra["reasoning"] = {"effort": self.s.chat_reasoning_effort}
         if extra:
             kwargs["extra_body"] = extra
         resp = await self.client.chat.completions.create(**kwargs)

@@ -134,6 +134,28 @@ async def test_free_only_fallback_request_preserves_evidence_and_zero_price(serv
     assert SEEN[0]["auth"] == "Bearer sk-chat-only"
 
 
+async def test_paid_fallback_sends_reasoning_effort_and_no_price_cap(server, variant):
+    SEEN.clear()
+    primary = "google/gemma-4-31b-it:free"
+    s = variant(chat_base_url="https://openrouter.ai/api/v1", chat_api_key="sk-chat-only", chat_model=primary,
+                chat_free_only=False, chat_fallback_models=["openai/gpt-5-nano"], chat_reasoning_effort="minimal")
+    client = OpenAIChat(s)
+    client.client.base_url = server
+    try:
+        await client.complete([{"role": "user", "content": "hi"}], json_mode=True, max_tokens=700)
+    finally:
+        await client.client.close()
+    b = SEEN[0]["body"]
+    assert b["models"] == [primary, "openai/gpt-5-nano"]
+    assert b["reasoning"] == {"effort": "minimal"}
+    assert "provider" not in b
+
+
+def test_invalid_reasoning_effort_rejected(variant):
+    with pytest.raises(ValueError, match="CHAT_REASONING_EFFORT"):
+        OpenAIChat(variant(chat_base_url="https://openrouter.ai/api/v1", chat_api_key="k", chat_reasoning_effort="bogus"))
+
+
 async def test_default_chat_does_not_send_openrouter_parameters(server, variant):
     SEEN.clear()
     client = OpenAIChat(variant(openai_api_key="test", openai_base_url=server))
